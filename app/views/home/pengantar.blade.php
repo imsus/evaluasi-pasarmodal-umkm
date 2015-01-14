@@ -1,11 +1,7 @@
-@extends('base')
-
-@section('title')
-<title>Pengantar</title>
-@stop
+@extends('base.base')
 
 @section('content')
-<div class="container" style="max-width: 700px">
+	<div class="container" style="max-width: 700px">
   <div class="page-header">
     <h1>Pengantar Pasar Modal</h1>
   </div>
@@ -49,6 +45,7 @@
       <div class="panel-body">
         <p><strong>Emiten</strong> adalah Pihak yang melakukan Penawaran Umum.</p>
         <p><strong>Investor</strong> adalah penanam uang atau modal; orang yg menanamkan uangnya dl usaha dengan tujuan mendapatkan keuntungan</p>
+        <br>
         <h4>Pelaku Penunjang</h4>
           <ul>
             <li><p><strong>Lembaga Penunjang Pasar Modal</strong></p></li>
@@ -75,6 +72,7 @@
     <div id="collapseFour" class="panel-collapse collapse">
       <div class="panel-body">
         <p><strong>Penawaran Umum</strong> adalah kegiatan penawaran Efek yang dilakukan oleh Emiten untuk menjual Efek kepada masyarakat berdasarkan tata cara yang diatur dalam Undang-undang ini dan peraturan pelaksanaannya.</p>
+        <br>
         <h4>Perusahaan Menengah atau Kecil (PMK)</h4>
         <ul>
           <li>
@@ -103,6 +101,7 @@
             </ul>
           </li>
         </ul>
+        <br>
         <h4>Mekanisme IPO PMK</h4>
         <ul>
           <li>
@@ -131,40 +130,24 @@
     </div>
     <div id="collapseFive" class="panel-collapse collapse">
       <div class="panel-body">
-        <h4>Modal Sendiri</h4>
-          <ul>
-            <li>
-              <p><strong>Setoran Pokok</strong> adalah sejumlah uang, yang wajib dibayar oleh seseorang atau badan hukum Koperasi pada saat yang bersangkutan mengajukan permohonan keanggotaan pada suatu Koperasi.</p>
-            </li>
-            <li>
-              <p><strong>Sertifikat Modal Koperasi</strong> adalah bukti penyertaan Anggota Koperasi dalam modal Koperasi.</p>
-            </li>
-            <li>
-              <p><strong>Dana cadangan</strong> adalah sejumlah uang yang diperoleh dari penyisihan Sisa Hasil usaha, yang dimaksudkan untuk pemupukan modal sendiri, pembagian kepada anggota yang keluar dari keanggotaan koperasi, dan untuk menutup kerugian koperasi bila diperlukan.</p>
-            </li>
-            <li>
-              <p><strong>Hibah</strong> adalah pemberian uang dan/atau barang kepada Koperasi dengan sukarela tanpa imbalan jasa, sebagai modal usaha.</p>
-            </li>
-          </ul>
-        <h4>Modal Luar / Pinjaman</h4>
-        <p>Adapun modal pinjaman koperasi berasal dari pihak-pihak sebagai berikut:</p>
+        <p>Modal Koperasi terdiri dari <strong>modal sendiri</strong> dan <strong>modal pinjaman</strong></p>
+        <p><strong>Modal sendiri</strong> dapat berasal dari:</p>
         <ul>
-          <li>
-            <p><strong>Anggota</strong> dan calon anggota</p>
-          </li>
-          <li>
-            <p><strong>Koperasi lainnya</strong> dan/atau anggotanya yang didasari dengan perjanjian kerjasama antarkoperasi</p>
-          </li>
-          <li>
-            <p><strong>Bank</strong> dan <strong>Lembaga keuangan bukan bank</strong> / lembaga keuangan lainnya yang dilakukan berdasarkan ketentuan peraturan perundang-undangan yang berlaku</p>
-          </li>
-          <li>
-            <p><strong>Penerbitan obligasi dan surat utang</strong> lainnya yang dilakukan berdasarkan ketentuan peraturan perundang-undangan yang berlaku</p>
-          </li>
-          <li>
-            <p><strong>Sumber lain</strong> yang sah</p>
-          </li>
+        	<li>simpanan pokok;</li>
+        	<li>simpanan wajib;</li>
+        	<li>dana cadangan;</li>
+        	<li>hibah.</li>
         </ul>
+        <p><strong>Modal pinjaman</strong> dapat berasal dari:</p>
+        <ul>
+        	<li>anggota;</li>
+        	<li>Koperasi lainnya dan/atau anggotanya;</li>
+        	<li>bank dan lembaga keuangan lainnya;</li>
+        	<li>penerbit obligasi dan surat hutang lainnya;</li>
+        	<li>sumber lain yang sah.</li>
+        </ul>
+        <p>Koperasi dapat pula melakukan pemupukan modal yang berasal dari <strong>modal penyertaan</strong>.</p>
+        <p>Ketentuan mengenai pemupukan modal yang berasal dari <strong>modal penyertaan diatur lebih lanjut dengan Peraturan Pemerintah</strong>.</p>
       </div>
     </div>
   </div>

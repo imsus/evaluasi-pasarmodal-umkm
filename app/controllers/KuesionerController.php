@@ -12,12 +12,12 @@ class KuesionerController extends BaseController {
 	public function getIndex()
 	{
 		$kuesioners = Kuesioner::all();
-		return View::make('kuesioner')->with('kuesioners', $kuesioners);
+		return View::make('kuesioner.index')->with('kuesioners', $kuesioners);
 	}
 
 	public function getNew()
 	{
-		return View::make('new');
+		return View::make('kuesioner.create');
 	}
 
 	public function postNew()
@@ -86,19 +86,19 @@ class KuesionerController extends BaseController {
 		$kuesioner->saran = $saran;
 
 		$kuesioner->save();
-		return Redirect::to('kuesioner');
+		return Redirect::to('kuesioner.index');
 	}
 
 	public function getDetail($id)
 	{
     $kuesioner = Kuesioner::find($id);
-		return View::make('detail')->with('kuesioner', $kuesioner);
+		return View::make('kuesioner.view')->with('kuesioner', $kuesioner);
 	}
 
 	public function getEdit($id)
 	{
 		$kuesioner = Kuesioner::find($id);
-		return View::make('edit')->with('kuesioner', $kuesioner);
+		return View::make('kuesioner.edit')->with('kuesioner', $kuesioner);
 	}
 
 	public function putEdit($id)
@@ -106,28 +106,28 @@ class KuesionerController extends BaseController {
 		$kuesioner = Kuesioner::find($id);
 		$kuesioner->fill(Input::all());
 
-    $pmodall = $kuesioner->modall / ($kuesioner->modala + $kuesioner->modals + $kuesioner->modall);
+	    $pmodall = $kuesioner->modall / ($kuesioner->modala + $kuesioner->modals + $kuesioner->modall);
 
-    if ($pmodall <= 0.15) {$kuesioner->pmodal = '5';}
-    elseif ($pmodall <= 0.25) {$kuesioner->pmodal = '4';}
-    elseif ($pmodall <= 0.5) {$kuesioner->pmodal = '3';}
-    elseif ($pmodall <= 0.75) {$kuesioner->pmodal = '2';}
-    elseif ($pmodall <= 1) {$kuesioner->pmodal = '1';}
+	    if ($pmodall <= 0.15) {$kuesioner->pmodal = '5';}
+	    elseif ($pmodall <= 0.25) {$kuesioner->pmodal = '4';}
+	    elseif ($pmodall <= 0.5) {$kuesioner->pmodal = '3';}
+	    elseif ($pmodall <= 0.75) {$kuesioner->pmodal = '2';}
+	    elseif ($pmodall <= 1) {$kuesioner->pmodal = '1';}
 
-    $rlaba = $kuesioner->sales - $kuesioner->expense;
-    $prlaba = $rlaba / $kuesioner->sales;
+	    $rlaba = $kuesioner->sales - $kuesioner->expense;
+	    $prlaba = $rlaba / $kuesioner->sales;
 
-    if ($rlaba <= 10000000) {$kuesioner->laba = '1';}
-    elseif ($rlaba <= 20000000) {$kuesioner->laba = '2';}
-    elseif ($rlaba <= 50000000) {$kuesioner->laba = '3';}
-    elseif ($rlaba <= 100000000) {$kuesioner->laba = '4';}
-    elseif ($rlaba > 100000000) {$kuesioner->laba = '5';}
+	    if ($rlaba <= 10000000) {$kuesioner->laba = '1';}
+	    elseif ($rlaba <= 20000000) {$kuesioner->laba = '2';}
+	    elseif ($rlaba <= 50000000) {$kuesioner->laba = '3';}
+	    elseif ($rlaba <= 100000000) {$kuesioner->laba = '4';}
+	    elseif ($rlaba > 100000000) {$kuesioner->laba = '5';}
 
-    if ($prlaba <= 0.05) {$kuesioner->plaba = '1';}
-    elseif ($prlaba <= 0.1) {$kuesioner->plaba = '2';}
-    elseif ($prlaba <= 0.15) {$kuesioner->plaba = '3';}
-    elseif ($prlaba <= 0.25) {$kuesioner->plaba = '4';}
-    elseif ($prlaba > 0.25) {$kuesioner->plaba = '5';}
+	    if ($prlaba <= 0.05) {$kuesioner->plaba = '1';}
+	    elseif ($prlaba <= 0.1) {$kuesioner->plaba = '2';}
+	    elseif ($prlaba <= 0.15) {$kuesioner->plaba = '3';}
+	    elseif ($prlaba <= 0.25) {$kuesioner->plaba = '4';}
+	    elseif ($prlaba > 0.25) {$kuesioner->plaba = '5';}
 
 		$liq = ($kuesioner->kas + $kuesioner->ar + $kuesioner->inv) / ($kuesioner->ca + $kuesioner->std);
 		$sol = ($kuesioner->kas + $kuesioner->ar + $kuesioner->inv + $kuesioner->ld + $kuesioner->bd + $kuesioner->me + $kuesioner->vc + $kuesioner->oa) / ($kuesioner->ltd + $kuesioner->std);
@@ -172,7 +172,7 @@ class KuesionerController extends BaseController {
 	{
 		$kuesioner = Kuesioner::find($id);
 		$kuesioner->delete();
-		return Redirect::to('kuesioner');
+		return Redirect::to('kuesioner.index');
 	}
 
   // TODO - EDIT PDF

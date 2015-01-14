@@ -1,8 +1,4 @@
-@extends('base')
-
-@section('title')
-<title>Kuesioner</title>
-@stop
+@extends('base.base')
 
 @section('content')
 <style>

@@ -1,8 +1,4 @@
-@extends('base')
-
-@section('title')
-<title>Edit Kuesioner #{{ $kuesioner->id }}</title>
-@stop
+@extends('base.base')
 
 @section('content')
 <style>

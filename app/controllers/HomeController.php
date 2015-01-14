@@ -17,22 +17,22 @@ class HomeController extends BaseController {
 
 	public function getIndex()
 	{
-		return View::make('index');
+		return View::make('home.index');
 	}
 
 	public function getPengantar()
 	{
-		return View::make('pengantar');
+		return View::make('home.pengantar');
 	}
 
 	public function getPanduan()
 	{
-		return View::make('panduan');
+		return View::make('home.panduan');
 	}
 
 	public function getLogin()
 	{
-		return View::make('login');
+		return View::make('home.login');
 	}
 
 	public function postLogin()
@@ -53,12 +53,6 @@ class HomeController extends BaseController {
 	{
 		Auth::logout();
 		return Redirect::to('login');
-	}
-
-	public function getKuesioner2()
-	{
-		if(!Auth::check()) return Redirect::to('login');
-		return "hello world";
 	}
 
 }

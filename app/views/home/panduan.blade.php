@@ -1,11 +1,7 @@
-@extends('base')
-
-@section('title')
-<title>Panduan</title>
-@stop
+@extends('base.base')
 
 @section('content')
-<div class="container" style="max-width:960px">
+	<div class="container" style="max-width:960px">
   <div class="page-header">
     <h1>Panduan Penggunaan Aplikasi</h1>
   </div>
@@ -60,6 +56,7 @@ password: umkm</pre>
     </a>
     <p style="text-align: center"><small>Gambar 7</small></p>
     </div>
+
     <div class="col-md-3 visible-lg">
       <div data-spy="affix" data-offset-top="190">
         <ul class="nav nav-stacked">
@@ -73,6 +70,7 @@ password: umkm</pre>
         </ul>
       </div>
     </div>
+
   </div>
 </div>
 @stop

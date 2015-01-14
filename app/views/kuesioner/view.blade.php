@@ -1,8 +1,4 @@
-@extends('base')
-
-@section('title')
-
-@stop
+@extends('base.base')
 
 @section('content')
 <style>
@@ -108,11 +104,11 @@
           <h4>Surat</h4>
           <dl class="dl-horizontal">
             <dt>Kelengkapan Surat :</dt><dd>
-               @if ( $kuesioner->surat === 1 ) Tidak Ada
-               @elseif ( $kuesioner->surat === 2 ) Tidak Lengkap
-               @elseif ( $kuesioner->surat === 3 ) Kurang Lengkap
-               @elseif ( $kuesioner->surat === 4 ) Lengkap
-               @elseif ( $kuesioner->surat === 5 ) Sangat Lengkap
+               @if ( $kuesioner->surat == 1 ) Tidak Ada
+               @elseif ( $kuesioner->surat == 2 ) Tidak Lengkap
+               @elseif ( $kuesioner->surat == 3 ) Kurang Lengkap
+               @elseif ( $kuesioner->surat == 4 ) Lengkap
+               @elseif ( $kuesioner->surat == 5 ) Sangat Lengkap
                @endif
               <span class="badge">{{ $kuesioner->surat }}</span>
             </dd>
@@ -141,43 +137,43 @@
           <h4>Sistem</h4>
           <dl class="dl-horizontal">
             <dt>Sistem Manajemen :</dt><dd>
-              @if ( $kuesioner->sistem === 1 ) Tidak Memiliki
-              @elseif ( $kuesioner->sistem === 2 ) Tidak Memiliki, Sedang Merencanakan
-              @elseif ( $kuesioner->sistem === 3 ) Memiliki, Tidak Diterapkan
-              @elseif ( $kuesioner->sistem === 4 ) Memiliki, Dijalankan Sebagian
-              @elseif ( $kuesioner->sistem === 5 ) Memiliki, Dijalankan Semuanya
+              @if ( $kuesioner->sistem == 1 ) Tidak Memiliki
+              @elseif ( $kuesioner->sistem == 2 ) Tidak Memiliki, Sedang Merencanakan
+              @elseif ( $kuesioner->sistem == 3 ) Memiliki, Tidak Diterapkan
+              @elseif ( $kuesioner->sistem == 4 ) Memiliki, Dijalankan Sebagian
+              @elseif ( $kuesioner->sistem == 5 ) Memiliki, Dijalankan Semuanya
               @endif
               <span class="badge">{{ $kuesioner->sistem }}</span></dd>
             <dt>Sertifikasi :</dt><dd>
-              @if ( $kuesioner->sertifikasi === 1 ) Tidak Memiliki
-              @elseif ( $kuesioner->sertifikasi === 2 ) Tidak Memiliki, Sedang Mengajukan
-              @elseif ( $kuesioner->sertifikasi === 3 ) Memiliki, Tidak Valid
-              @elseif ( $kuesioner->sertifikasi === 4 ) Memiliki, Suspended
-              @elseif ( $kuesioner->sertifikasi === 5 ) Memiliki, Valid
+              @if ( $kuesioner->sertifikasi == 1 ) Tidak Memiliki
+              @elseif ( $kuesioner->sertifikasi == 2 ) Tidak Memiliki, Sedang Mengajukan
+              @elseif ( $kuesioner->sertifikasi == 3 ) Memiliki, Tidak Valid
+              @elseif ( $kuesioner->sertifikasi == 4 ) Memiliki, Suspended
+              @elseif ( $kuesioner->sertifikasi == 5 ) Memiliki, Valid
               @endif
               <span class="badge">{{ $kuesioner->sertifikasi }}</span></dd>
             <dt>Struktur Perusahaan :</dt><dd>
-              @if ( $kuesioner->struktur === 1 ) Tidak Ada
-              @elseif ( $kuesioner->struktur === 2 ) Tidak Lengkap
-              @elseif ( $kuesioner->struktur === 3 ) Kurang Lengkap
-              @elseif ( $kuesioner->struktur === 4 ) Lengkap
-              @elseif ( $kuesioner->struktur === 5 ) Sangat Lengkap
+              @if ( $kuesioner->struktur == 1 ) Tidak Ada
+              @elseif ( $kuesioner->struktur == 2 ) Tidak Lengkap
+              @elseif ( $kuesioner->struktur == 3 ) Kurang Lengkap
+              @elseif ( $kuesioner->struktur == 4 ) Lengkap
+              @elseif ( $kuesioner->struktur == 5 ) Sangat Lengkap
               @endif
               <span class="badge">{{ $kuesioner->struktur }}</span></dd>
             <dt>Manajemen Mutu :</dt><dd>
-              @if ( $kuesioner->mutu === 1 ) Tidak Memiliki
-              @elseif ( $kuesioner->mutu === 2 ) Tidak Memiliki, Sedang Mengajukan
-              @elseif ( $kuesioner->mutu === 3 ) Memiliki, Tidak Valid
-              @elseif ( $kuesioner->mutu === 4 ) Memiliki, Suspended
-              @elseif ( $kuesioner->mutu === 5 ) Memiliki, Valid
+              @if ( $kuesioner->mutu == 1 ) Tidak Memiliki
+              @elseif ( $kuesioner->mutu == 2 ) Tidak Memiliki, Sedang Mengajukan
+              @elseif ( $kuesioner->mutu == 3 ) Memiliki, Tidak Valid
+              @elseif ( $kuesioner->mutu == 4 ) Memiliki, Suspended
+              @elseif ( $kuesioner->mutu == 5 ) Memiliki, Valid
               @endif
               <span class="badge">{{ $kuesioner->mutu }}</span></dd>
             <dt>Uraian Tugas :</dt><dd>
-              @if ( $kuesioner->tugas === 1 ) Tidak Ada
-              @elseif ( $kuesioner->tugas === 2 ) Tidak Lengkap
-              @elseif ( $kuesioner->tugas === 3 ) Kurang Lengkap
-              @elseif ( $kuesioner->tugas === 4 ) Lengkap
-              @elseif ( $kuesioner->tugas === 5 ) Sangat Lengkap
+              @if ( $kuesioner->tugas == 1 ) Tidak Ada
+              @elseif ( $kuesioner->tugas == 2 ) Tidak Lengkap
+              @elseif ( $kuesioner->tugas == 3 ) Kurang Lengkap
+              @elseif ( $kuesioner->tugas == 4 ) Lengkap
+              @elseif ( $kuesioner->tugas == 5 ) Sangat Lengkap
               @endif
               <span class="badge">{{ $kuesioner->tugas }}</span></dd>
           </dl>
@@ -187,35 +183,35 @@
             <dt>Modal Sendiri :</dt><dd>{{ 'Rp ' . number_format($kuesioner->modals, 0, ',', '.') }}</dd>
             <dt>Modal Luar :</dt><dd>{{ 'Rp ' . number_format($kuesioner->modall, 0, ',', '.') }}</dd>
             <dt>Perimbangan Modal :</dt><dd>
-              @if ( $kuesioner->pmodal === 1 ) 76% - 100% Modal Luar
-              @elseif ( $kuesioner->pmodal === 2 ) 51% - 75% Modal Luar
-              @elseif ( $kuesioner->pmodal === 3 ) 26% - 50% Modal Luar
-              @elseif ( $kuesioner->pmodal === 4 ) 16% - 25% Modal Luar
-              @elseif ( $kuesioner->pmodal === 5 ) 0 - 15% Modal Luar
+              @if ( $kuesioner->pmodal == 1 ) 76% - 100% Modal Luar
+              @elseif ( $kuesioner->pmodal == 2 ) 51% - 75% Modal Luar
+              @elseif ( $kuesioner->pmodal == 3 ) 26% - 50% Modal Luar
+              @elseif ( $kuesioner->pmodal == 4 ) 16% - 25% Modal Luar
+              @elseif ( $kuesioner->pmodal == 5 ) 0 - 15% Modal Luar
               @endif
               <span class="badge">{{ $kuesioner->pmodal }}</span></dd>
             <dt>Perbankan :</dt><dd>
-              @if ( $kuesioner->bank === 1 ) Tidak pernah mengajukan pinjaman
-              @elseif ( $kuesioner->bank === 2 ) Mengajukan pinjaman, tidak mendapat respon
-              @elseif ( $kuesioner->bank === 3 ) Mengajukan pinjaman dan dijanjikan memperoleh pinjaman
-              @elseif ( $kuesioner->bank === 4 ) Mengajukan pinjaman, memperoleh pinjaman, jumlah tidak sesuai dengan yang diajukan
-              @elseif ( $kuesioner->bank === 5 ) Mengajukan pinjaman, memperoleh pinjaman, jumlah sesuai dengan yang diajukan
+              @if ( $kuesioner->bank == 1 ) Tidak pernah mengajukan pinjaman
+              @elseif ( $kuesioner->bank == 2 ) Mengajukan pinjaman, tidak mendapat respon
+              @elseif ( $kuesioner->bank == 3 ) Mengajukan pinjaman dan dijanjikan memperoleh pinjaman
+              @elseif ( $kuesioner->bank == 4 ) Mengajukan pinjaman, memperoleh pinjaman, jumlah tidak sesuai dengan yang diajukan
+              @elseif ( $kuesioner->bank == 5 ) Mengajukan pinjaman, memperoleh pinjaman, jumlah sesuai dengan yang diajukan
               @endif
               <span class="badge">{{ $kuesioner->bank }}</span></dd>
             <dt>Laba Rupiah :</dt><dd>
-              @if ( $kuesioner->laba === 1 ) < 10 Juta
-              @elseif ( $kuesioner->laba === 2 ) 10-20 Juta
-              @elseif ( $kuesioner->laba === 3 ) 20-50 Juta
-              @elseif ( $kuesioner->laba === 4 ) 50-100 Juta
-              @elseif ( $kuesioner->laba === 5 ) > 100 Juta
+              @if ( $kuesioner->laba == 1 ) < 10 Juta
+              @elseif ( $kuesioner->laba == 2 ) 10-20 Juta
+              @elseif ( $kuesioner->laba == 3 ) 20-50 Juta
+              @elseif ( $kuesioner->laba == 4 ) 50-100 Juta
+              @elseif ( $kuesioner->laba == 5 ) > 100 Juta
               @endif
               <span class="badge">{{ $kuesioner->laba }}</span></dd>
             <dt>Laba Persen :</dt><dd>
-              @if ( $kuesioner->plaba === 1 ) < 5%
-              @elseif ( $kuesioner->plaba === 2 ) 5-10%
-              @elseif ( $kuesioner->plaba === 3 ) 10-15%
-              @elseif ( $kuesioner->plaba === 4 ) 15-25%
-              @elseif ( $kuesioner->plaba === 5 ) > 25%
+              @if ( $kuesioner->plaba == 1 ) < 5%
+              @elseif ( $kuesioner->plaba == 2 ) 5-10%
+              @elseif ( $kuesioner->plaba == 3 ) 10-15%
+              @elseif ( $kuesioner->plaba == 4 ) 15-25%
+              @elseif ( $kuesioner->plaba == 5 ) > 25%
               @endif
               <span class="badge">{{ $kuesioner->plaba }}</span></dd>
           </dl>
@@ -228,12 +224,13 @@
 				<div class="panel-body">
 					<h4>Keputusan</h4>
 					<p>{{ $kuesioner->kepakh }}</p>
+					<br>
 					<h4>Saran</h4>
+					<h5>Aspek Keuangan</h5>
 					<p><blockquote>{{ $kuesioner->saran }}</blockquote></p>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
 @stop
