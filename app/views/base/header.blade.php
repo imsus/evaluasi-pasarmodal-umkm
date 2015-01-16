@@ -1,40 +1,23 @@
-<nav class="navbar navbar-default navbar-static-top">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/">Aplikasi Pasar Modal</a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        @if (Auth::check())
-			<li @if ( Request::segment(1)=='kuesioner' ) { class="active" } @endif><a href="/kuesioner"><span class="glyphicon glyphicon-stats"></span> Kuesioner</a>
-			</li>
+<md-toolbar>
+	<div class="md-toolbar-tools">
+		<md-button class="menu-icon" ng-click="toggleLeft()" hide-gt-md aria-label="Toggle Menu">
+			<svg viewBox="0 0 24 24" style="height:24;width:24"><path fill="#ffffff" d="M3 6H21V8H3V6ZM3 11H21V13H3V11ZM3 16H21V18H3V16Z"/></svg>
+        </md-button>
+		<span>Home</span>
+		<!-- fill up the space between left and right area -->
+		<span flex></span>
+		@if (Auth::user())
+			<md-button href="/logout" style="display: flex; align-items: center">
+				<svg viewBox="0 0 24 24" style="height:24;width:24"><path fill="#fff" d="M17 17.3V14H10V10H17V6.8L22.3 12 17 17.3ZM13 2A2 2 0 0 1 15 4V8H13V4H4V20H13V16H15V20A2 2 0 0 1 13 22H4A2 2 0 0 1 2 20V4A2 2 0 0 1 4 2H13Z"/></svg>
+				Logout
+			</md-button>
+		@else
+		<md-button href="/login" style="display: flex; align-items: center">
+			<svg viewBox="0 0 24 24" style="height:24px;width:24px">
+  				<path fill="#fff" d="M10 17.25V14H3V10H10V6.75L15.25 12 10 17.25ZM8 2H17A2 2 0 0 1 19 4V20A2 2 0 0 1 17 22H8A2 2 0 0 1 6 20V16H8V20H17V4H8V8H6V4A2 2 0 0 1 8 2Z"/>
+			</svg>
+			Login
+		</md-button>
 		@endif
-		<li @if ( Request::segment(1)=='pengantar' ) { class="active" } @endif><a href="/pengantar"><span class="glyphicon glyphicon-book"></span> Pengantar Pasar Modal</a>
-		</li>
-		<li @if ( Request::segment(1)=='panduan' ) { class="active" } @endif><a href="/panduan"><span class="glyphicon glyphicon-pencil"></span> Panduan</a>
-		</li>
-		<li><a href="/tentang" data-toggle="modal" data-target="#tentang"><span class="glyphicon glyphicon-copyright-mark"></span> Tentang</a>
-		</li>
-      </ul>
-      <div class="navbar-right" style="margin-right: 0;">
-      	@if (Auth::check())
-      		<?php $user = Auth::user() ?>
-			<p class="navbar-text">Halo, <strong>{{ $user->username }}</strong></p>
-			<a href="/logout" class="btn btn-danger navbar-btn"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
-      	@else
-      		<p class="navbar-text">Anda belum login</p>
-			<a href="/login" class="btn btn-primary navbar-btn"><span class="glyphicon glyphicon-log-out"></span> Login</a>
-      	@endif
-      </div>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+	</div>
+</md-toolbar>
