@@ -32,16 +32,16 @@
 			</thead>
 	 		@foreach($kuesioners as $kuesioner)
 	        <tr>
-	        	<td>{{ $kuesioner->id }}</td>
-	        	<td>{{ $kuesioner->nama }}</td>
-	        	<td>{{ $kuesioner->created_at }}</td>
-	        	<td>{{ $kuesioner->updated_at }}</td>
+	        	<td><% $kuesioner->id %></td>
+	        	<td><% $kuesioner->nama %></td>
+	        	<td><% $kuesioner->created_at %></td>
+	        	<td><% $kuesioner->updated_at %></td>
 				<td>
 					<div class="btn-group btn-group-sm option pull-right">
-						<a href="/kuesioner/detail/{{ $kuesioner->id }}" class="btn btn-default btn-success"><span class="glyphicon glyphicon-check"></span> Detail</a>
-						<a href="/kuesioner/edit/{{ $kuesioner->id }}" class="btn btn-default btn-info"><span class="glyphicon glyphicon-edit"></span> Edit</a>
-            <a href="/kuesioner/print/{{ $kuesioner->id }}" class="btn btn-default btn-primary"><span class="glyphicon glyphicon-print"></span> Print</a>
-						<a href="/kuesioner/delete/{{ $kuesioner->id }}" class="btn btn-default btn-danger"><span class="glyphicon glyphicon-trash"></span> Hapus</a>
+						<a href="/kuesioner/detail/<% $kuesioner->id %>" class="btn btn-default btn-success"><span class="glyphicon glyphicon-check"></span> Detail</a>
+						<a href="/kuesioner/edit/<% $kuesioner->id %>" class="btn btn-default btn-info"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+            <a href="/kuesioner/print/<% $kuesioner->id %>" class="btn btn-default btn-primary"><span class="glyphicon glyphicon-print"></span> Print</a>
+						<a href="/kuesioner/delete/<% $kuesioner->id %>" class="btn btn-default btn-danger"><span class="glyphicon glyphicon-trash"></span> Hapus</a>
 					</div></td>
 	        	</tr>
 	    	@endforeach

@@ -9,7 +9,7 @@
     @include('base.stylesheet')
 </head>
 
-<body ng-controller="AppCtrl" layout="column" layout-fill>
+<body ng-controller="ApplicationCtrl" layout="column" layout-fill>
 	<section layout="row" flex>
 	    @include('base.sidenav')
 	    <div layout="column" layout-fill>

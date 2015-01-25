@@ -7,7 +7,7 @@
 		<div class="col-md-2"><a href="/kuesioner" class="btn btn-danger btn-block" style="margin: 55px 0px 0px 0px"><span class="glyphicon glyphicon-remove"></span> Batal</a></div>
 	</div>
 	<div class="row">
-		{{ Form::open(array('url' => 'kuesioner/new', 'role' => 'form' )) }}
+		<% Form::open(array('url' => 'kuesioner/new', 'role' => 'form' )) %>
 		<div class="col-md-4">
 			<h3>Data Umum</h3>
 			<div class="form-group">
@@ -223,7 +223,7 @@
 		</div>
 		<div class="col-md-10"><button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button></div>
 		<div class="col-md-2"><button type="reset" class="btn btn-danger btn-lg btn-block">Reset</button></div>
-		{{ Form::close() }}
+		<% Form::close() %>
 	</div>
 </div>
 @stop

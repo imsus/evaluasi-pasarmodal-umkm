@@ -11,6 +11,9 @@
 |
 */
 
+Blade::setContentTags('<%', '%>');
+Blade::setEscapedContentTags('<%%', '%%>');
+
 date_default_timezone_set('Asia/Jakarta');
 Route::controller('kuesioner', 'KuesionerController');
 Route::controller('/', 'HomeController');

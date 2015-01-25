@@ -2,19 +2,20 @@
   <md-toolbar class="md-theme-indigo">
     <h1 class="md-toolbar-tools" style="justify-content: center">Aplikasi Pasar Modal</h1>
   </md-toolbar>
-  <md-content flex class="md-padding" ng-controller="LeftCtrl" style="overflow: auto">
-    <p>Aplikasi ini bertujuan untuk mengevaluasi kelayakan UMKM untuk bisa masuk ke Pasar Modal.</p>
+  <md-content flex ng-controller="SidenavCtrl" style="overflow: auto">
     <md-list>
 
 	  <md-item>
 	    <md-item-content>
+	    <md-button href="/kuesioner" layout="row" layout-fill layout-align="space-between center">
 	      <div class="md-tile-left">
-	      	<a href="/kuesioner"><svg viewBox="0 0 24 24" style="height:40;width:40"><path fill="rgba(0,0,0,.87)" d="M3 22V8H7V22H3ZM10 22V2H14V22H10ZM17 22V14H21V22H17Z"/></svg></a>
+	      	<svg viewBox="0 0 24 24" style="height:40;width:40"><path fill="rgba(0,0,0,.87)" d="M3 22V8H7V22H3ZM10 22V2H14V22H10ZM17 22V14H21V22H17Z"/></svg>
 	      </div>
-	      <div class="md-tile-content">
-	        <h3><a href="">Kuesioner</a></h3>
-	        <h4>Mengisi Kuesioner</h4>
+	      <div class="md-tile-content" style="text-align: left">
+	        <h3>Kuesioner</h3>
+	        <h4>Memasukkan Data</h4>
 	      </div>
+	    </md-button>
 	    </md-item-content>
 	  </md-item>
 
@@ -22,13 +23,15 @@
 
 	  <md-item>
 	    <md-item-content>
+	    <md-button href="/panduan" layout="row" layout-fill layout-align="space-between center">
 	      <div class="md-tile-left">
 	      	<svg viewBox="0 0 24 24" style="height:40;width:40"><path fill="rgba(0,0,0,.87)" d="M14 17H7V15H14M17 13H7V11H17M17 9H7V7H17M19 3H5C3.9 3 3 3.9 3 5V19A2 2 0 0 0 5 21H19A2 2 0 0 0 21 19V5C21 3.9 20.1 3 19 3Z"/></svg>
 	      </div>
-	      <div class="md-tile-content">
+	      <div class="md-tile-content" style="text-align: left">
 	        <h3>Panduan</h3>
-	        <h4>Panduan Penggunaan</h4>
+	        <h4>Penggunaan Aplikasi</h4>
 	      </div>
+	    </md-button>
 	    </md-item-content>
 	  </md-item>
 
@@ -36,13 +39,15 @@
 
 	  <md-item>
 	    <md-item-content>
+	    <md-button href="/pengantar" layout="row" layout-fill layout-align="space-between center">
 	      <div class="md-tile-left">
 	      	<svg viewBox="0 0 24 24" style="height:40;width:40"><path fill="rgba(0,0,0,.87)" d="M12 8A3 3 0 0 0 15 5 3 3 0 0 0 12 2 3 3 0 0 0 9 5 3 3 0 0 0 12 8ZM12 11.5C9.6 9.4 6.5 8 3 8V19C6.5 19 9.6 20.4 12 22.5 14.4 20.4 17.5 19 21 19V8C17.5 8 14.4 9.4 12 11.5Z"/></svg>
 	      </div>
-	      <div class="md-tile-content">
-	        <h3>Definisi</h3>
+	      <div class="md-tile-content" style="text-align: left">
+	        <h3>Pengantar</h3>
 	        <h4>Tentang Pasar Modal</h4>
 	      </div>
+	    </md-button>
 	    </md-item-content>
 	  </md-item>
 
@@ -50,13 +55,15 @@
 
 	  <md-item>
 	    <md-item-content>
-	      <div class="md-tile-left">
-	      	<svg viewBox="0 0 24 24" style="height:40;width:40"><path fill="rgba(0,0,0,.87)" d="M13 9H11V7H13M13 17H11V11H13M12 2A10 10 0 0 0 2 12 10 10 0 0 0 12 22 10 10 0 0 0 22 12 10 10 0 0 0 12 2Z"/></svg>
-	      </div>
-	      <div class="md-tile-content">
-	        <h3>Tentang</h3>
-	        <h4>Informasi Aplikasi</h4>
-	      </div>
+	    <md-button ng-click="showTentang($event)" layout="row" layout-fill layout-align="space-between center">
+		      <div class="md-tile-left">
+		      	<svg viewBox="0 0 24 24" style="height:40;width:40"><path fill="rgba(0,0,0,.87)" d="M13 9H11V7H13M13 17H11V11H13M12 2A10 10 0 0 0 2 12 10 10 0 0 0 12 22 10 10 0 0 0 22 12 10 10 0 0 0 12 2Z"/></svg>
+		      </div>
+		      <div class="md-tile-content" style="text-align: left">
+		        <h3>Tentang</h3>
+		        <h4>Informasi Aplikasi</h4>
+		      </div>
+	      </md-button>
 	    </md-item-content>
 	  </md-item>
 	</md-list>

@@ -8,22 +8,22 @@
 </style>
 <div class="container">
   <div class="row">
-    <div class="col-md-9"><h1 class="page-header">Edit Kuesioner <strong>#{{ $kuesioner->id }}</strong></h1></div>
+    <div class="col-md-9"><h1 class="page-header">Edit Kuesioner <strong>#<% $kuesioner->id %></strong></h1></div>
     <div class="col-md-3">
       <div class="btn-group btn-group-justified page-navigation">
         <div class="btn-group"><a href="/kuesioner" type="button" class="btn btn-default"><span class="glyphicon glyphicon-home"></span> Balik</a></div>
-        <div class="btn-group"><a href="/kuesioner/detail/{{ $kuesioner->id }}" type="button" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Detil</a></div>
-        <div class="btn-group"><a href="/kuesioner/delete/{{ $kuesioner->id }}" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Hapus</a></div>
+        <div class="btn-group"><a href="/kuesioner/detail/<% $kuesioner->id %>" type="button" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Detil</a></div>
+        <div class="btn-group"><a href="/kuesioner/delete/<% $kuesioner->id %>" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Hapus</a></div>
       </div>
     </div>
   </div>
 <div class="row">
-  {{ Form::open(array('url' => 'kuesioner/edit/' . $kuesioner->id, 'method' => 'put', 'role' => 'form' )) }}
+  <% Form::open(array('url' => 'kuesioner/edit/' . $kuesioner->id, 'method' => 'put', 'role' => 'form' )) %>
     <div class="col-md-4">
       <h3>Data Umum</h3>
       <div class="form-group">
         <label for="nama">1. Nama Perusahaan</label>
-        <input type="text" class="form-control" required name="nama" id="nama" placeholder="Contoh: Saung Ayam" value="{{ $kuesioner->nama }}">
+        <input type="text" class="form-control" required name="nama" id="nama" placeholder="Contoh: Saung Ayam" value="<% $kuesioner->nama %>">
       </div>
       <div class="checkbox">
         <label>
@@ -45,7 +45,7 @@
       </div>
       <div class="form-group">
         <label for="tahun">3. Tahun Berdiri</label>
-        <input type="number" min="1914" max="2114" step="1" class="form-control" name="tahun" id="tahun" placeholder="Contoh: 2000" value="{{ $kuesioner->tahun }}">
+        <input type="number" min="1914" max="2114" step="1" class="form-control" name="tahun" id="tahun" placeholder="Contoh: 2000" value="<% $kuesioner->tahun %>">
       </div>
       <div class="form-group">
         <label for="status2">4. Status</label>
@@ -58,40 +58,40 @@
       </div>
       <div class="form-group">
         <label for="alamat">5. Alamat Perusahaan</label>
-        <textarea name="alamat" id="alamat" class="form-control" rows="3" placeholder="Contoh: Jl. H.R. Rasuna Said Kav. C-22">{{ $kuesioner->alamat }}</textarea>
+        <textarea name="alamat" id="alamat" class="form-control" rows="3" placeholder="Contoh: Jl. H.R. Rasuna Said Kav. C-22"><% $kuesioner->alamat %></textarea>
       </div>
       <div class="form-group">
         <label for="kota">6. Kota</label>
-        <input type="text" class="form-control" name="kota" id="kota" placeholder="Contoh: Kuningan, Jakarta Selatan" value="{{ $kuesioner->kota }}">
+        <input type="text" class="form-control" name="kota" id="kota" placeholder="Contoh: Kuningan, Jakarta Selatan" value="<% $kuesioner->kota %>">
       </div>
       <h4>7. Kontak Perusahaan</h4>
       <div class="form-group">
         <label for="telp">Telepon</label>
-        <input type="text" class="form-control" name="telp" id="telp" placeholder="Contoh: +622197648321" value="{{ $kuesioner->telp }}">
+        <input type="text" class="form-control" name="telp" id="telp" placeholder="Contoh: +622197648321" value="<% $kuesioner->telp %>">
       </div>
       <div class="form-group">
         <label for="fax">Fax</label>
-        <input type="text" class="form-control" name="fax" id="fax" placeholder="Contoh: +622197648321" value="{{ $kuesioner->fax }}">
+        <input type="text" class="form-control" name="fax" id="fax" placeholder="Contoh: +622197648321" value="<% $kuesioner->fax %>">
       </div>
       <div class="form-group">
         <label for="hp">Handphone</label>
-        <input type="text" class="form-control" name="hp" id="hp" placeholder="Contoh: +622197648321" value="{{ $kuesioner->hp }}">
+        <input type="text" class="form-control" name="hp" id="hp" placeholder="Contoh: +622197648321" value="<% $kuesioner->hp %>">
       </div>
       <div class="form-group">
         <label for="web">8. Website</label>
-        <input type="url" class="form-control" name="web" id="web" placeholder="Contoh: http://google.com" value="{{ $kuesioner->web }}">
+        <input type="url" class="form-control" name="web" id="web" placeholder="Contoh: http://google.com" value="<% $kuesioner->web %>">
       </div>
       <div class="form-group">
         <label for="pj">9. Penanggung Jawab</label>
-        <input type="text" class="form-control" name="pj" id="pj" placeholder="Contoh: Mas Budi" value="{{ $kuesioner->pj }}">
+        <input type="text" class="form-control" name="pj" id="pj" placeholder="Contoh: Mas Budi" value="<% $kuesioner->pj %>">
       </div>
       <div class="form-group">
         <label for="manager">10. Jumlah Manajer</label>
-        <input type="text" class="form-control" name="manager" id="manager" placeholder="Contoh: 4" value="{{ $kuesioner->manager }}">
+        <input type="text" class="form-control" name="manager" id="manager" placeholder="Contoh: 4" value="<% $kuesioner->manager %>">
       </div>
       <div class="form-group">
         <label for="karyawan">11. Jumlah Karyawan</label>
-        <input type="text" class="form-control" name="karyawan" id="karyawan" placeholder="Contoh: 10" value="{{ $kuesioner->karyawan }}">
+        <input type="text" class="form-control" name="karyawan" id="karyawan" placeholder="Contoh: 10" value="<% $kuesioner->karyawan %>">
       </div>
     </div>
     <div class="col-md-4">
@@ -108,7 +108,7 @@
       </div>
       <div class="form-group">
         <label for="tsurat">13. Tahun Terbit Surat</label>
-        <input type="number" min="1914" max="2114" step="1" class="form-control" name="tsurat" id="tsurat" placeholder="Contoh: 1999" value="{{ $kuesioner->tsurat }}">
+        <input type="number" min="1914" max="2114" step="1" class="form-control" name="tsurat" id="tsurat" placeholder="Contoh: 1999" value="<% $kuesioner->tsurat %>">
       </div>
       <div class="form-group">
         <label>14. Apakah perusahaan ada / memiliki kelengkapan perijinan perusahaan?</label><br>
@@ -169,13 +169,13 @@
       </div>
       <h4>20. Berapa besar modal perusahaan /usaha anda?</h4>
       <div class="form-group">
-        <label for="modala">Modal Awal</label><input type="text" required name="modala" class="form-control" placeholder="Contoh: 50000000" value="{{ $kuesioner->modala }}">
+        <label for="modala">Modal Awal</label><input type="text" required name="modala" class="form-control" placeholder="Contoh: 50000000" value="<% $kuesioner->modala %>">
       </div>
       <div class="form-group">
-        <label for="modals">Modal Sendiri</label><input type="text" required name="modals" class="form-control" placeholder="Contoh: 50000000" value="{{ $kuesioner->modals }}">
+        <label for="modals">Modal Sendiri</label><input type="text" required name="modals" class="form-control" placeholder="Contoh: 50000000" value="<% $kuesioner->modals %>">
       </div>
       <div class="form-group">
-        <label for="modall">Modal Luar</label><input type="text" required name="modall" class="form-control" placeholder="Contoh: 50000000" value="{{ $kuesioner->modall }}">
+        <label for="modall">Modal Luar</label><input type="text" required name="modall" class="form-control" placeholder="Contoh: 50000000" value="<% $kuesioner->modall %>">
       </div>
       <div class="form-group">
         <label for="bank">21. Perbankan</label>
@@ -192,48 +192,48 @@
       <h3>Aspek Keuangan</h3>
       <h4>22. Likuiditas</h4>
       <div class="form-group">
-        <label for="kas">Kas dan Setara Kas</label><input type="text" name="kas" class="form-control" placeholder="Contoh: 50000000" value="{{ $kuesioner->kas }}">
+        <label for="kas">Kas dan Setara Kas</label><input type="text" name="kas" class="form-control" placeholder="Contoh: 50000000" value="<% $kuesioner->kas %>">
       </div>
       <div class="form-group">
-        <label for="ar">Piutang</label><input type="text" name="ar" class="form-control" placeholder="Contoh: 50000000" value="{{ $kuesioner->ar }}">
+        <label for="ar">Piutang</label><input type="text" name="ar" class="form-control" placeholder="Contoh: 50000000" value="<% $kuesioner->ar %>">
       </div>
       <div class="form-group">
-        <label for="inv">Persediaan</label><input type="text" name="inv" class="form-control" placeholder="Contoh: 50000000" value="{{ $kuesioner->inv }}">
+        <label for="inv">Persediaan</label><input type="text" name="inv" class="form-control" placeholder="Contoh: 50000000" value="<% $kuesioner->inv %>">
       </div>
       <div class="form-group">
-        <label for="ca">Hutang Lancar</label><input type="text" required name="ca" class="form-control" placeholder="Contoh: 50000000" value="{{ $kuesioner->ca }}">
+        <label for="ca">Hutang Lancar</label><input type="text" required name="ca" class="form-control" placeholder="Contoh: 50000000" value="<% $kuesioner->ca %>">
       </div>
       <div class="form-group">
-        <label for="std">Hutang Jangka Pendek</label><input type="text" required name="std" class="form-control" placeholder="Contoh: 50000000" value="{{ $kuesioner->std }}">
+        <label for="std">Hutang Jangka Pendek</label><input type="text" required name="std" class="form-control" placeholder="Contoh: 50000000" value="<% $kuesioner->std %>">
       </div>
       <h4>23. Solvabilitas</h4>
       <div class="form-group">
-        <label for="ld">Tanah</label><input type="text" name="ld" class="form-control" placeholder="Contoh: 50000000" value="{{ $kuesioner->ld }}">
+        <label for="ld">Tanah</label><input type="text" name="ld" class="form-control" placeholder="Contoh: 50000000" value="<% $kuesioner->ld %>">
       </div>
       <div class="form-group">
-        <label for="bd">Bangunan</label><input type="text" name="bd" class="form-control" placeholder="Contoh: 50000000" value="{{ $kuesioner->bd }}">
+        <label for="bd">Bangunan</label><input type="text" name="bd" class="form-control" placeholder="Contoh: 50000000" value="<% $kuesioner->bd %>">
       </div>
       <div class="form-group">
-        <label for="me">Mesin dan Peralatan</label><input type="text" name="me" class="form-control" placeholder="Contoh: 50000000" value="{{ $kuesioner->me }}">
+        <label for="me">Mesin dan Peralatan</label><input type="text" name="me" class="form-control" placeholder="Contoh: 50000000" value="<% $kuesioner->me %>">
       </div>
       <div class="form-group">
-        <label for="vc">Kendaraan</label><input type="text" name="vc" class="form-control" placeholder="Contoh: 50000000" value="{{ $kuesioner->vc }}">
+        <label for="vc">Kendaraan</label><input type="text" name="vc" class="form-control" placeholder="Contoh: 50000000" value="<% $kuesioner->vc %>">
       </div>
       <div class="form-group">
-        <label for="oa">Inventaris Lainnya</label><input type="text" name="oa" class="form-control" placeholder="Contoh: 50000000" value="{{ $kuesioner->oa }}">
+        <label for="oa">Inventaris Lainnya</label><input type="text" name="oa" class="form-control" placeholder="Contoh: 50000000" value="<% $kuesioner->oa %>">
       </div>
       <div class="form-group">
-        <label for="ltd">Hutang Jangka Panjang</label><input type="text" required name="ltd" class="form-control" placeholder="Contoh: 50000000" value="{{ $kuesioner->ltd }}">
+        <label for="ltd">Hutang Jangka Panjang</label><input type="text" required name="ltd" class="form-control" placeholder="Contoh: 50000000" value="<% $kuesioner->ltd %>">
       </div>
       <h4>24. Profitabilitas</h4>
       <div class="form-group">
-        <label for="sales">Total Penjualan</label><input type="text" name="sales" required class="form-control" placeholder="Contoh: 50000000" value="{{ $kuesioner->sales }}">
+        <label for="sales">Total Penjualan</label><input type="text" name="sales" required class="form-control" placeholder="Contoh: 50000000" value="<% $kuesioner->sales %>">
       </div>
       <div class="form-group">
-        <label for="expense">Total Pengeluaran</label><input type="text" name="expense" class="form-control" placeholder="Contoh: 50000000" value="{{ $kuesioner->expense }}">
+        <label for="expense">Total Pengeluaran</label><input type="text" name="expense" class="form-control" placeholder="Contoh: 50000000" value="<% $kuesioner->expense %>">
       </div>
     </div>
     <div class="col-md-12"><button type="submit" class="btn btn-success btn-lg btn-block">Edit</button></div>
-  {{ Form::close() }}
+  <% Form::close() %>
 </div>
 @stop
