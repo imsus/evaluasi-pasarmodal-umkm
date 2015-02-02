@@ -6,224 +6,418 @@
 		<div class="col-md-10"><h1 class="page-header">Kuesioner Baru</h1></div>
 		<div class="col-md-2"><a href="/kuesioner" class="btn btn-danger btn-block" style="margin: 55px 0px 0px 0px"><span class="glyphicon glyphicon-remove"></span> Batal</a></div>
 	</div>
+	{{ Form::open(array('url' => 'kuesioner/new', 'role' => 'form' )) }}
 	<div class="row">
-		{{ Form::open(array('url' => 'kuesioner/new', 'role' => 'form' )) }}
 		<div class="col-md-4">
-			<h3>Data Umum</h3>
+			<h2 class="page-header">Data Umum</h2>
+			<h3>Kontak perusahaan</h3>
 			<div class="form-group">
-				<label for="nama">1. Nama Perusahaan</label>
-				<input type="text" class="form-control" required name="nama" id="nama" placeholder="Contoh: Saung Ayam">
-			</div>
-			<div class="checkbox">
-				<label>
-					<input type="checkbox" name="go" value=""> Centang jika sudah Go Publik
-				</label>
+				{{ Form::label('kontak_nama', '1. Nama Koperasi/Perusahaan UKM') }}
+				{{ Form::text('kontak_nama', null, array('class' => 'form-control')) }}
 			</div>
 			<div class="form-group">
-				<label for="status1">2. Status Badan Usaha</label>
-				<select class="form-control" name="status1" id="status1">
-					<option value="PT">PT (Perseroan Terbatas)</option>
-					<option value="Koperasi">Koperasi</option>
-					<option value="Firma">Firma</option>
-					<option value="CV">CV (<i>Commanditaire Venootschaap</i>)</option>
-					<option value="Persero">Persero</option>
-					<option value="UD">UD (Usaha Dagang)</option>
-					<option value="Lainnya">Lainnya</option>
-				</select>
+				{{ Form::checkbox('kontak_gopublik', 'kontak_gopublik', null, array('id' => 'kontak_gopublik')) }}
+				{{ Form::label('kontak_gopublik', 'Centang Jika sudah Go Publik') }}
 			</div>
 			<div class="form-group">
-				<label for="tahun">3. Tahun Berdiri</label>
-				<input type="number" min="1914" max="2114" step="1" class="form-control" name="tahun" id="tahun" placeholder="Contoh: 2000">
+				{{ Form::label('kontak_alamat', '2. Alamat Kantor/Pabrik') }}
+				{{ Form::textarea('kontak_alamat', null, array('class' => 'form-control', 'rows' => '5')) }}
 			</div>
 			<div class="form-group">
-				<label for="status2">4. Status</label>
-				<select class="form-control" name="status2" id="status2">
-					<option value="PMDN">PMDN (Penanaman Modal Dalam Negeri)</option>
-					<option value="JO">JO (Joint Operation)</option>
-					<option value="JV">JV (Joint Venture)</option>
-					<option value="JMA">JMA (Joint Merger Acquisition)</option>
-				</select>
+				{{ Form::label('kontak_kota', '3. Kota, Provinsi') }}
+				{{ Form::text('kontak_kota', null, array('class' => 'form-control')) }}
 			</div>
 			<div class="form-group">
-				<label for="alamat">5. Alamat Perusahaan</label>
-				<textarea name="alamat" id="alamat" class="form-control" rows="3" placeholder="Contoh: Jl. H.R. Rasuna Said Kav. C-22"></textarea>
+				{{ Form::label('kontak_telepon', '4. No. Telepon') }}
+				{{ Form::text('kontak_telepon', null, array('class' => 'form-control')) }}
 			</div>
 			<div class="form-group">
-				<label for="kota">6. Kota</label>
-				<input type="text" class="form-control" name="kota" id="kota" placeholder="Contoh: Kuningan, Jakarta Selatan">
+				{{ Form::label('kontak_fax', '5. No. Fax') }}
+				{{ Form::text('kontak_fax', null, array('class' => 'form-control')) }}
 			</div>
 			<div class="form-group">
-				<h4>7. Kontak Perusahaan</h4>
-				<label for="telp">Telepon</label>
-				<input type="text" class="form-control" name="telp" id="telp" placeholder="Contoh: +622197648321">
+				{{ Form::label('kontak_handphone', '6. No. Handphone') }}
+				{{ Form::text('kontak_handphone', null, array('class' => 'form-control')) }}
 			</div>
 			<div class="form-group">
-				<label for="fax">Fax</label>
-				<input type="text" class="form-control" name="fax" id="fax" placeholder="Contoh: +622197648321">
+				{{ Form::label('kontak_website', '7. Alamat Website') }}
+				{{ Form::url('kontak_website', null, array('class' => 'form-control')) }}
+			</div>
+			<h3>Status Perusahaan</h3>
+			<div class="form-group">
+				{{ Form::label('status_tahun', '8. Tahun Berdiri') }}
+				{{ Form::number('status_tahun', null, array('class' => 'form-control', 'min' => '1900', 'max' => '2100')) }}
 			</div>
 			<div class="form-group">
-				<label for="hp">Handphone</label>
-				<input type="text" class="form-control" name="hp" id="hp" placeholder="Contoh: +622197648321">
+				{{ Form::label('status_usaha', '9. Status Badan Hukum/Usaha') }}
+				{{ Form::select('status_usaha', array('makan', 'minum'), null, array('class' => 'form-control')) }}
 			</div>
 			<div class="form-group">
-				<label for="web">8. Website</label>
-				<input type="url" class="form-control" name="web" id="web" placeholder="Contoh: http://google.com">
+				{{ Form::label('status_pemodalan', '10. Status Investasi/Pemodalan') }}
+				{{ Form::select('status_pemodalan', array('makan', 'minum'), null, array('class' => 'form-control')) }}
 			</div>
 			<div class="form-group">
-				<label for="pj">9. Penanggung Jawab</label>
-				<input type="text" class="form-control" name="pj" id="pj" placeholder="Contoh: Mas Budi">
+				{{ Form::label('status_pj', '11. Ketua Pengurus/Penanggung Jawab') }}
+				{{ Form::text('status_pj', null, array('class' => 'form-control')) }}
 			</div>
 			<div class="form-group">
-				<label for="manager">10. Jumlah Manajer</label>
-				<input type="text" class="form-control" name="manager" id="manager" placeholder="Contoh: 4">
+				{{ Form::label('status_manajer', '12. Jumlah Perwakilan Manajer') }}
+				{{ Form::number('status_manajer', null, array('class' => 'form-control', 'min' => '1900', 'max' => '2100')) }}
 			</div>
 			<div class="form-group">
-				<label for="karyawan">11. Jumlah Karyawan</label>
-				<input type="text" class="form-control" name="karyawan" id="karyawan" placeholder="Contoh: 10">
+				{{ Form::label('status_karyawan', '13. Jumlah Karyawan') }}
+				{{ Form::number('status_karyawan', null, array('class' => 'form-control', 'min' => '1900', 'max' => '2100')) }}
 			</div>
 		</div>
 		<div class="col-md-4">
-			<h3>Aspek Manajerial</h3>
+			<h2 class="page-header">Aspek Manajerial</h2>
+			<h3>Dokumen legalitas perusahaan</h3>
 			<div class="form-group">
-				<label for="surat">12. Kelengkapan Surat</label>
-				<select class="form-control" name="surat" id="surat">
-					<option value="1">Tidak Ada</option>
-					<option value="2">Tidak Lengkap</option>
-					<option value="3">Kurang Lengkap</option>
-					<option value="4">Lengkap</option>
-					<option value="5">Sangat Lengkap</option>
-				</select>
+				{{ Form::label('dokumen_akte', '14. Apakah perusahaan anda memiliki Akte Pendirian?') }}
+				{{ Form::select('dokumen_akte', array('makan', 'minum'), null, array('class' => 'form-control')) }}
 			</div>
 			<div class="form-group">
-				<label for="tsurat">13. Tahun Terbit Surat</label>
-				<input type="number" min="1914" max="2114" step="1" class="form-control" name="tsurat" id="tsurat" placeholder="Contoh: 1999">
+				{{ Form::label('dokumen_tahun', '15. Tahun terbit surat') }}
+				{{ Form::number('dokumen_tahun', null, array('class' => 'form-control', 'min' => '1900', 'max' => '2100')) }}
 			</div>
 			<div class="form-group">
-				<label>14. Apakah perusahaan ada / memiliki kelengkapan perijinan perusahaan?</label><br>
-				<label class="checkbox-inline"><input type="checkbox" name="npwp" value="">NPWP</label>
-				<label class="checkbox-inline"><input type="checkbox" name="siup" value="">SIUP</label>
-				<label class="checkbox-inline"><input type="checkbox" name="iui" value="">IUI</label>
-				<label class="checkbox-inline"><input type="checkbox" name="situ" value="">SITU</label>
+				{{ Form::label(null, '16. Apakah perusahaan ada / memiliki kelengkapan perijinanan perusahaan?') }}
+				{{ Form::checkbox('dokumen_npwp', 'dokumen_npwp', null, array('id' => 'dokumen_npwp')) }}
+				{{ Form::label('dokumen_npwp', 'NPWP') }}
+				{{ Form::checkbox('dokumen_siup', 'dokumen_siup', null, array('id' => 'dokumen_siup')) }}
+				{{ Form::label('dokumen_siup', 'SIUP') }}
+				{{ Form::checkbox('dokumen_tdp', 'dokumen_tdp', null, array('id' => 'dokumen_tdp')) }}
+				{{ Form::label('dokumen_tdp', 'TDP') }}
+				{{ Form::checkbox('dokumen_iui', 'dokumen_iui', null, array('id' => 'dokumen_iui')) }}
+				{{ Form::label('dokumen_iui', 'IUI/TDI') }}
+				{{ Form::checkbox('dokumen_situ', 'dokumen_situ', null, array('id' => 'dokumen_situ')) }}
+				{{ Form::label('dokumen_situ', 'SITU') }}
+			</div>
+			<h3>Sistem Manajemen</h3>
+			<div class="form-group">
+				{{ Form::label('sm_punya', '17. Apakah perusahaan anda memiliki dan menerapkan Sistem Manajemen?') }}
+				{{ Form::select('sm_punya', array('makan', 'minum'), null, array('class' => 'form-control')) }}
 			</div>
 			<div class="form-group">
-				<label for="sistem">15. Sistem Manajemen</label>
-				<select class="form-control" name="sistem" id="sistem">
-					<option value="1">Tidak Memiliki</option>
-					<option value="2">Tidak Memiliki, Sedang Merencanakan</option>
-					<option value="3">Memiliki, Tidak Menerapkan</option>
-					<option value="4">Memiliki, Dijalankan Sebagian</option>
-					<option value="5">Memiliki, Dijalankan Semuanya</option>
-				</select>
+				{{ Form::label('sm_sertifikasi', '18. Apakah Sistem Manajemen Mutu perusahaan  anda mendapat sertifikasi?') }}
+				{{ Form::select('sm_sertifikasi', array('makan', 'minum'), null, array('class' => 'form-control')) }}
 			</div>
 			<div class="form-group">
-				<label for="sertifikasi">16. Sertifikasi</label>
-				<select class="form-control" name="sertifikasi" id="sertifikasi">
-					<option value="1">Tidak Memiliki</option>
-					<option value="2">Tidak Memiliki, Sedang Mengajukan</option>
-					<option value="3">Memiliki, Tidak Valid</option>
-					<option value="4">Memiliki, Suspended</option>
-					<option value="5">Memiliki, Valid</option>
-				</select>
+				{{ Form::label('sm_so', '19. Apakah Koperasi/perusahaan anda memiliki struktur organisasi?') }}
+				{{ Form::select('sm_so', array('makan', 'minum'), null, array('class' => 'form-control')) }}
 			</div>
 			<div class="form-group">
-				<label for="struktur">17. Struktur Perusahaan</label>
-				<select class="form-control" name="struktur" id="struktur">
-					<option value="1">Tidak Ada</option>
-					<option value="2">Tidak Lengkap</option>
-					<option value="3">Kurang Lengkap</option>
-					<option value="4">Lengkap</option>
-					<option value="5">Sangat Lengkap</option>
-				</select>
+				{{ Form::label('sm_jobdesc', '20. *Jika Ya, apakah disertai dengan uraian tugas dan fungsi untuk seluruh bagian?') }}
+				{{ Form::select('sm_jobdesc', array('makan', 'minum'), null, array('class' => 'form-control')) }}
 			</div>
 			<div class="form-group">
-				<label for="mutu">18. Manajemen Mutu</label>
-				<select class="form-control" name="mutu" id="mutu">
-					<option value="1">Tidak Memiliki</option>
-					<option value="2">Tidak Memiliki, Sedang Mengajukan</option>
-					<option value="3">Memiliki, Tidak Valid</option>
-					<option value="4">Memiliki, Suspended</option>
-					<option value="5">Memiliki, Valid</option>
-				</select>
+				{{ Form::label('sm_sop', '21. Apakah Koperasi/perusahaan anda memiliki SOP?') }}
+				{{ Form::select('sm_sop', array('makan', 'minum'), null, array('class' => 'form-control')) }}
 			</div>
 			<div class="form-group">
-				<label for="tugas">19. Uraian Tugas</label>
-				<select class="form-control" name="tugas" id="tugas">
-					<option value="1">Tidak Ada</option>
-					<option value="2">Tidak Lengkap</option>
-					<option value="3">Kurang Lengkap</option>
-					<option value="4">Lengkap</option>
-					<option value="5">Sangat Lengkap</option>
-				</select>
+				{{ Form::label('sm_arsip', '22. Apakah Koperasi/perusahaan anda memiliki sistem pengarsipan?') }}
+				{{ Form::select('sm_arsip', array('makan', 'minum'), null, array('class' => 'form-control')) }}
 			</div>
 			<div class="form-group">
-				<h4>20. Berapa besar modal perusahaan /usaha anda?</h4>
-				<label for="modala">Modal Awal</label><input type="text" required name="modala" class="form-control" placeholder="Contoh: 50000000">
+				{{ Form::label('sm_audit', '23. Apakah Koperasi/perusahaan anda melakukan internal audit secara berkala?') }}
+				{{ Form::select('sm_audit', array('makan', 'minum'), null, array('class' => 'form-control')) }}
 			</div>
 			<div class="form-group">
-				<label for="modals">Modal Sendiri</label><input type="text" required name="modals" class="form-control" placeholder="Contoh: 50000000">
+				{{ Form::label('sm_tqc', '24. Apakah perusahaan melakukan total quality control dari bahan baku sampai ke produk?') }}
+				{{ Form::select('sm_tqc', array('makan', 'minum'), null, array('class' => 'form-control')) }}
 			</div>
 			<div class="form-group">
-				<label for="modall">Modal Luar</label><input type="text" required name="modall" class="form-control" placeholder="Contoh: 50000000">
+				{{ Form::label('sm_satisfaction', '25. Apakah perusahaan anda memperhatikan kepuasan pelanggan?') }}
+				{{ Form::select('sm_satisfaction', array('makan', 'minum'), null, array('class' => 'form-control')) }}
+			</div>
+			<h3>Kelengkapan sarana dan prasarana</h3>
+			<div class="form-group">
+				{{ Form::label('sarana_luas_kantor', '26. Berapakah luas bangunan tempat kerja dan kantor?') }}
+				{{ Form::select('sarana_luas_kantor', array('makan', 'minum'), null, array('class' => 'form-control')) }}
 			</div>
 			<div class="form-group">
-				<label for="bank">21. Perbankan</label>
-				<select class="form-control" name="bank" id="bank">
-					<option value="1">Tidak pernah mengajukan pinjaman</option>
-					<option value="2">Mengajukan Pinjaman, tapi tidak mendapat respon</option>
-					<option value="3">Mengajukan Pinjaman, dan dijanjikan memperoleh pinjaman</option>
-					<option value="4">Mengajukan Pinjaman, memperoleh pinjaman, jumlah tidak sesuai dengan yang diajukan</option>
-					<option value="5">Mengajukan Pinjaman, memperoleh pinjaman, jumlah sesuai dengan yang diajukan</option>
-				</select>
+				{{ Form::label('sarana_kondisi_kantor', '27. Bagaimana kondisi bangunan tempat kerja dan kantor?') }}
+				{{ Form::select('sarana_kondisi_kantor', array('makan', 'minum'), null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('sarana_nilai_kantor', '28. Berapa perkiraan nilai bangunan tempat kerja dan kantor?') }}
+				{{ Form::select('sarana_nilai_kantor', array('makan', 'minum'), null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('sarana_luas_gudang', '29. Berapa luas bangunan gudang? ') }}
+				{{ Form::select('sarana_luas_gudang', array('makan', 'minum'), null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('sarana_kondisi_gudang', '30. Bagaimana kondisi bangunan gudang?') }}
+				{{ Form::select('sarana_kondisi_gudang', array('makan', 'minum'), null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('sarana_nilai_gudang', '31. Berapa perkiraan nilai bangunan gudang?') }}
+				{{ Form::select('sarana_nilai_gudang', array('makan', 'minum'), null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('sarana_jumlah_mobil', '32. Berapa jumlah mobil pribadi/perusahaan yang dimiliki oleh Koperasi/perusahaan?') }}
+				{{ Form::select('sarana_jumlah_mobil', array('makan', 'minum'), null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('sarana_nilai_mobil', '33. Berapa nilai perolehan/pasar mobil pribadi/perusahaan dan yang dimiliki oleh Koperasi/perusahaan?') }}
+				{{ Form::select('sarana_nilai_mobil', array('makan', 'minum'), null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('sarana_jumlah_angkutan', '34. Berapa jumlah mobil angkutan yang dimiliki oleh perusahaan anda?') }}
+				{{ Form::select('sarana_jumlah_angkutan', array('makan', 'minum'), null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('sarana_nilai_angkutan', '35. Berapa nilai perolehan/pasar mobil angkutan yang dimiliki oleh perusahaan anda?') }}
+				{{ Form::select('sarana_nilai_angkutan', array('makan', 'minum'), null, array('class' => 'form-control')) }}
+			</div>
+			<h3>Potensi Perluasan</h3>
+			<div class="form-group">
+				{{ Form::label('potensi_perluasan', '36. Apakah perusahaan mempunyai rencana perluasan terhadap kegiatan produksi, gedung dan sarana serta fasilitas produksi?') }}
+				{{ Form::select('potensi_perluasan', array('makan', 'minum'), null, array('class' => 'form-control')) }}
 			</div>
 		</div>
 		<div class="col-md-4">
-			<h3>Aspek Keuangan</h3>
+			<h2 class="page-header">Aspek Mesin dan Produksi</h2>
+			<h3>Efisiensi dan efektivitas</h3>
 			<div class="form-group">
-				<h4>22. Likuiditas</h4>
-				<label for="kas">Kas dan Setara Kas</label><input type="text" name="kas" class="form-control" placeholder="Contoh: 50000000">
+				{{ Form::label('efisiensi_standar', '37. Apakan jenis-jenis mesin yang digunakan oleh perusahaan anda sudah memenuhi standar minimal dari produk yang akan dibuat?') }}
+				{{ Form::select('efisiensi_standar', array('makan', 'minum'), null, array('class' => 'form-control')) }}
 			</div>
 			<div class="form-group">
-				<label for="ar">Piutang</label><input type="text" name="ar" class="form-control" placeholder="Contoh: 50000000">
+				{{ Form::label('efisiensi_jumlah', '38. Apakah jumlah mesin yang ada sudah mencukupi  dengan volume produk yang akan dihasilkan?') }}
+				{{ Form::select('efisiensi_jumlah', array('makan', 'minum'), null, array('class' => 'form-control')) }}
 			</div>
 			<div class="form-group">
-				<label for="inv">Persediaan</label><input type="text" name="inv" class="form-control" placeholder="Contoh: 50000000">
+				{{ Form::label('efisiensi_kapasitas', '39. Apakah setiap mesin di Koperasi/perusahaan anda sudah bekerja secara maksimal (sesuai jam kerja)?') }}
+				{{ Form::select('efisiensi_kapasitas', array('makan', 'minum'), null, array('class' => 'form-control')) }}
 			</div>
 			<div class="form-group">
-				<label for="ca">Hutang Lancar</label><input type="text" required name="ca" class="form-control" placeholder="Contoh: 50000000">
+				{{ Form::label('efisiensi_umur', '40. Berapa usia mayoritasmesin yang digunakan di Koperasi/perusahaan anda?') }}
+				{{ Form::select('efisiensi_umur', array('makan', 'minum'), null, array('class' => 'form-control')) }}
 			</div>
 			<div class="form-group">
-				<label for="std">Hutang Jangka Pendek</label><input type="text" required name="std" class="form-control" placeholder="Contoh: 50000000">
+				{{ Form::label('efisiensi_perawatan', '41. Apakah dilakukan perawatan mesin-mesin produksi di Koperasi/perusahaan anda?') }}
+				{{ Form::select('efisiensi_perawatan', array('makan', 'minum'), null, array('class' => 'form-control')) }}
 			</div>
 			<div class="form-group">
-				<h4>23. Solvabilitas</h4>
-				<label for="ld">Tanah</label><input type="text" name="ld" class="form-control" placeholder="Contoh: 50000000">
+				{{ Form::label('efisiensi_rendemen', '42. Berapa nilai efisiensi produksi (rendemen) dari usaha yang dilakukan?') }}
+				{{ Form::select('efisiensi_rendemen', array('makan', 'minum'), null, array('class' => 'form-control')) }}
 			</div>
 			<div class="form-group">
-				<label for="bd">Bangunan</label><input type="text" name="bd" class="form-control" placeholder="Contoh: 50000000">
+				{{ Form::label('efisiensi_variasi', '43. Berapa jenis produk yang dihasilkan oleh Koperasi/perusahaan?') }}
+				{{ Form::select('efisiensi_variasi', array('makan', 'minum'), null, array('class' => 'form-control')) }}
+			</div>
+			<h3>Kebutuhan energi</h3>
+			<div class="form-group">
+				{{ Form::label('energi_pln', '44. Berapa kapasitas listrik yang dipakai di Koperasi/perushaan anda?') }}
+				{{ Form::select('energi_pln', array('makan', 'minum'), null, array('class' => 'form-control')) }}
 			</div>
 			<div class="form-group">
-				<label for="me">Mesin dan Peralatan</label><input type="text" name="me" class="form-control" placeholder="Contoh: 50000000">
+				{{ Form::label('energi_genset', '45. Berapa kapasitas listrik yang dipakai di Koperasi/perushaan anda?') }}
+				{{ Form::select('energi_genset', array('makan', 'minum'), null, array('class' => 'form-control')) }}
 			</div>
+			<h3>Penggunaan energi alternatif selain PLN dan Genset</h3>
 			<div class="form-group">
-				<label for="vc">Kendaraan</label><input type="text" name="vc" class="form-control" placeholder="Contoh: 50000000">
+				{{ Form::label('alternatif_energi', '46. Selain penggunaan listrik PLN dan genset, apakah koperasi/perusahaan anda menggunakan energi alternative dalam proses produksi?') }}
+				{{ Form::select('alternatif_energi', array('makan', 'minum'), null, array('class' => 'form-control')) }}
 			</div>
+			<h3>Inovasi produk dan proses produksi</h3>
 			<div class="form-group">
-				<label for="oa">Inventaris Lainnya</label><input type="text" name="oa" class="form-control" placeholder="Contoh: 50000000">
-			</div>
-			<div class="form-group">
-				<label for="ltd">Hutang Jangka Panjang</label><input type="text" required name="ltd" class="form-control" placeholder="Contoh: 50000000">
-			</div>
-			<div class="form-group">
-				<h4>24. Profitabilitas</h4>
-				<label for="sales">Total Penjualan</label><input type="text" required name="sales" class="form-control" placeholder="Contoh: 50000000">
-			</div>
-			<div class="form-group">
-				<label for="expense">Total Pengeluaran</label><input type="text" name="expense" class="form-control" placeholder="Contoh: 50000000">
+				{{ Form::label('inovasi_produk', '47. Adakah inovasi baru yang dilakukan oleh Koperasi/perusahaan anda dalam meningkatkan nilai jual dan kualitas produk?') }}
+				{{ Form::select('inovasi_produk', array('makan', 'minum'), null, array('class' => 'form-control')) }}
 			</div>
 		</div>
-		<div class="col-md-10"><button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button></div>
-		<div class="col-md-2"><button type="reset" class="btn btn-danger btn-lg btn-block">Reset</button></div>
-		{{ Form::close() }}
+
+		<div class="clearfix"></div>
+
+		<div class="col-md-4">
+			<h2 class="page-header">Data Umum</h2>
+			<h3>Kontak Perusahaan</h3>
+			<div class="form-group">
+				{{ Form::label('kontak_name', '1. Nama Koperasi/Perusahaan UKM') }}
+				{{ Form::text('kontak_name', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::checkbox('kontak_gopublik', 'kontak_gopublik', null, array('id' => 'kontak_gopublik')) }}
+				{{ Form::label('kontak_gopublik', 'Centang Jika sudah Go Publik') }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('kontak_alamat', '2. Alamat Kantor/Pabrik') }}
+				{{ Form::textarea('kontak_alamat', null, array('class' => 'form-control', 'rows' => '5')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('kontak_kota', '3. Kota, Provinsi') }}
+				{{ Form::text('kontak_kota', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('kontak_telepon', '4. No. Telepon') }}
+				{{ Form::text('kontak_telepon', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('kontak_fax', '5. No. Fax') }}
+				{{ Form::text('kontak_fax', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('kontak_handphone', '6. No. Handphone') }}
+				{{ Form::text('kontak_handphone', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('kontak_website', '7. Alamat Website') }}
+				{{ Form::url('kontak_website', null, array('class' => 'form-control')) }}
+			</div>
+			<h3>Status Perusahaan</h3>
+			<div class="form-group">
+				{{ Form::label('status_tahun', '8. Tahun Berdiri') }}
+				{{ Form::number('status_tahun', null, array('class' => 'form-control', 'min' => '1900', 'max' => '2100')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('status_usaha', '9. Status Badan Hukum/Usaha') }}
+				{{ Form::select('status_usaha', array('makan', 'minum'), null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('status_pemodalan', '10. Status Investasi/Pemodalan') }}
+				{{ Form::select('status_pemodalan', array('makan', 'minum'), null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('status_pj', '11. Ketua Pengurus/Penanggung Jawab') }}
+				{{ Form::text('status_pj', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('status_manajer', '12. Jumlah Perwakilan Manajer') }}
+				{{ Form::number('status_manajer', null, array('class' => 'form-control', 'min' => '1900', 'max' => '2100')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('status_karyawan', '13. Jumlah Karyawan') }}
+				{{ Form::number('status_karyawan', null, array('class' => 'form-control', 'min' => '1900', 'max' => '2100')) }}
+			</div>
+		</div>
+		<div class="col-md-4">
+			<h2 class="page-header">Data Umum</h2>
+			<h3>Kontak Perusahaan</h3>
+			<div class="form-group">
+				{{ Form::label('kontak_name', '1. Nama Koperasi/Perusahaan UKM') }}
+				{{ Form::text('kontak_name', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::checkbox('kontak_gopublik', 'kontak_gopublik', null, array('id' => 'kontak_gopublik')) }}
+				{{ Form::label('kontak_gopublik', 'Centang Jika sudah Go Publik') }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('kontak_alamat', '2. Alamat Kantor/Pabrik') }}
+				{{ Form::textarea('kontak_alamat', null, array('class' => 'form-control', 'rows' => '5')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('kontak_kota', '3. Kota, Provinsi') }}
+				{{ Form::text('kontak_kota', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('kontak_telepon', '4. No. Telepon') }}
+				{{ Form::text('kontak_telepon', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('kontak_fax', '5. No. Fax') }}
+				{{ Form::text('kontak_fax', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('kontak_handphone', '6. No. Handphone') }}
+				{{ Form::text('kontak_handphone', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('kontak_website', '7. Alamat Website') }}
+				{{ Form::url('kontak_website', null, array('class' => 'form-control')) }}
+			</div>
+			<h3>Status Perusahaan</h3>
+			<div class="form-group">
+				{{ Form::label('status_tahun', '8. Tahun Berdiri') }}
+				{{ Form::number('status_tahun', null, array('class' => 'form-control', 'min' => '1900', 'max' => '2100')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('status_usaha', '9. Status Badan Hukum/Usaha') }}
+				{{ Form::select('status_usaha', array('makan', 'minum'), null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('status_pemodalan', '10. Status Investasi/Pemodalan') }}
+				{{ Form::select('status_pemodalan', array('makan', 'minum'), null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('status_pj', '11. Ketua Pengurus/Penanggung Jawab') }}
+				{{ Form::text('status_pj', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('status_manajer', '12. Jumlah Perwakilan Manajer') }}
+				{{ Form::number('status_manajer', null, array('class' => 'form-control', 'min' => '1900', 'max' => '2100')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('status_karyawan', '13. Jumlah Karyawan') }}
+				{{ Form::number('status_karyawan', null, array('class' => 'form-control', 'min' => '1900', 'max' => '2100')) }}
+			</div>
+		</div>
+		<div class="col-md-4">
+			<h2 class="page-header">Data Umum</h2>
+			<h3>Kontak Perusahaan</h3>
+			<div class="form-group">
+				{{ Form::label('kontak_name', '1. Nama Koperasi/Perusahaan UKM') }}
+				{{ Form::text('kontak_name', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::checkbox('kontak_gopublik', 'kontak_gopublik', null, array('id' => 'kontak_gopublik')) }}
+				{{ Form::label('kontak_gopublik', 'Centang Jika sudah Go Publik') }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('kontak_alamat', '2. Alamat Kantor/Pabrik') }}
+				{{ Form::textarea('kontak_alamat', null, array('class' => 'form-control', 'rows' => '5')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('kontak_kota', '3. Kota, Provinsi') }}
+				{{ Form::text('kontak_kota', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('kontak_telepon', '4. No. Telepon') }}
+				{{ Form::text('kontak_telepon', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('kontak_fax', '5. No. Fax') }}
+				{{ Form::text('kontak_fax', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('kontak_handphone', '6. No. Handphone') }}
+				{{ Form::text('kontak_handphone', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('kontak_website', '7. Alamat Website') }}
+				{{ Form::url('kontak_website', null, array('class' => 'form-control')) }}
+			</div>
+			<h3>Status Perusahaan</h3>
+			<div class="form-group">
+				{{ Form::label('status_tahun', '8. Tahun Berdiri') }}
+				{{ Form::number('status_tahun', null, array('class' => 'form-control', 'min' => '1900', 'max' => '2100')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('status_usaha', '9. Status Badan Hukum/Usaha') }}
+				{{ Form::select('status_usaha', array('makan', 'minum'), null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('status_pemodalan', '10. Status Investasi/Pemodalan') }}
+				{{ Form::select('status_pemodalan', array('makan', 'minum'), null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('status_pj', '11. Ketua Pengurus/Penanggung Jawab') }}
+				{{ Form::text('status_pj', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('status_manajer', '12. Jumlah Perwakilan Manajer') }}
+				{{ Form::number('status_manajer', null, array('class' => 'form-control', 'min' => '1900', 'max' => '2100')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('status_karyawan', '13. Jumlah Karyawan') }}
+				{{ Form::number('status_karyawan', null, array('class' => 'form-control', 'min' => '1900', 'max' => '2100')) }}
+			</div>
+		</div>
+
+		<div class="clearfix"></div>
+
 	</div>
+	{{ Form::close() }}
 </div>
 @stop

@@ -1,4 +1,5 @@
-{{ HTML::style('bower_components/bootswatch/simplex/bootstrap.min.css'); }}
+{{ HTML::style('bower_components/bootstrap/dist/css/bootstrap.min.css'); }}
+{{-- HTML::style('bower_components/bootswatch/simplex/bootstrap.min.css'); --}}
 {{ HTML::style('bower_components/fluidbox/css/fluidbox.css'); }}
 
 <style>
