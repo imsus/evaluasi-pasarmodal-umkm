@@ -13,4 +13,5 @@
 
 date_default_timezone_set('Asia/Jakarta');
 Route::controller('kuesioner', 'KuesionerController');
+Route::controller('kuesioner2', 'Kuesioner2Controller');
 Route::controller('/', 'HomeController');

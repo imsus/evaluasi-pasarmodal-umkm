@@ -274,6 +274,70 @@
 			</div>
 			<h3>Analisa aspek rasio keuangan</h3>
 			<div class="form-group">
+				{{ Form::label('rasio_kas', 'Kas') }}
+				{{ Form::text('rasio_kas', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('rasio_piutang', 'Piutang') }}
+				{{ Form::text('rasio_piutang', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('rasio_persediaan', 'Persediaan') }}
+				{{ Form::text('rasio_persediaan', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('rasio_hutang_lancar', 'Hutang Lancar') }}
+				{{ Form::text('rasio_hutang_lancar', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('rasio_hutang_pendek', 'Hutang Jangka Pendek') }}
+				{{ Form::text('rasio_hutang_pendek', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('rasio_tanah', 'Tanah') }}
+				{{ Form::text('rasio_tanah', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('rasio_bangunan', 'Bangunan') }}
+				{{ Form::text('rasio_bangunan', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('rasio_mesin', 'Mesin') }}
+				{{ Form::text('rasio_mesin', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('rasio_kendaraan', 'Kendaraan') }}
+				{{ Form::text('rasio_kendaraan', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('rasio_inventaris', 'Inventaris') }}
+				{{ Form::text('rasio_inventaris', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('rasio_hutang_panjang', 'Hutang Jangka Panjang') }}
+				{{ Form::text('rasio_hutang_panjang', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('rasio_total_aset', 'Total Aset') }}
+				{{ Form::text('rasio_total_aset', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('rasio_total_hutang', 'Total Kewajiban') }}
+				{{ Form::text('rasio_total_hutang', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('rasio_total_modal', 'Total Modal') }}
+				{{ Form::text('rasio_total_modal', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('rasio_total_penjualan', 'Total Penjualan') }}
+				{{ Form::text('rasio_total_penjualan', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
+				{{ Form::label('rasio_total_pengeluaran', 'Total Pengeluaran') }}
+				{{ Form::text('rasio_total_pengeluaran', null, array('class' => 'form-control')) }}
+			</div>
+			<div class="form-group">
 				{{ Form::label('rasio_likuiditas', '57. Bagaimanakan keadaan likuiditas Koperasi/perusahaan untuk tiga tahun terakhir?') }}
 				{{ Form::select('rasio_likuiditas', array('makan', 'minum'), null, array('class' => 'form-control')) }}
 			</div>
@@ -297,11 +361,7 @@
 				{{ Form::label('tk_kompetisi', '61. Bagaimanakah kompetensi tenaga kerja di koperasi/perusahaan anda saat ini?') }}
 				{{ Form::select('tk_kompetisi', array('makan', 'minum'), null, array('class' => 'form-control')) }}
 			</div>
-			<div class="form-group">
-				{{ Form::label('tk_gender', '62. Bagaimanakah komposisi tenaga kerja pada perusahaan anda dilihat dari jenis kelamin?') }}
-				{{ Form::select('tk_gender', array('makan', 'minum'), null, array('class' => 'form-control')) }}
-			</div>
-			<h3>Produktifitas Kerja</h3>
+			<h3>Produktivitas Kerja</h3>
 			<div class="form-group">
 				{{ Form::label('produktif_jam', '63. Berapa lama jam kerja tenaga kerja di perusaahan anda saat ini?') }}
 				{{ Form::select('produktif_jam', array('makan', 'minum'), null, array('class' => 'form-control')) }}
