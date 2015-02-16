@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableKuesioner2 extends Migration {
+class CreateTableKuesionerNew extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTableKuesioner2 extends Migration {
 	public function up()
 	{
 		//
-		Schema::create('kuesioners2', function($table)
+		Schema::create('kuesioner_new', function($table)
 	    {
 	    	// Essential
 	    	$table->bigIncrements('id');
@@ -86,18 +86,6 @@ class CreateTableKuesioner2 extends Migration {
 			// Inovasi produk dan proses produksi
 			$table->tinyInteger('inovasi_produk');
 
-			// Nilai Modal
-			$table->bigInteger('modal_awal');
-			$table->bigInteger('modal_sendiri');
-			$table->bigInteger('modal_luar');
-			$table->tinyInteger('modal_perimbangan');
-			// Laba Usaha
-			$table->bigInteger('laba_usaha');
-			// Hubungan dengan perbankan
-			$table->tinyInteger('hubungan_pinjaman');
-			$table->tinyInteger('hubungan_frekuensi');
-			$table->tinyInteger('hubungan_internal');
-			$table->tinyInteger('hubungan_eksternal');
 			// Analisa aspek rasio keuangan
 			$table->bigInteger('rasio_kas');
 			$table->bigInteger('rasio_piutang');
@@ -110,14 +98,31 @@ class CreateTableKuesioner2 extends Migration {
 			$table->bigInteger('rasio_kendaraan');
 			$table->bigInteger('rasio_inventaris');
 			$table->bigInteger('rasio_hutang_panjang');
-			$table->bigInteger('rasio_total_aset');
-			$table->bigInteger('rasio_total_hutang');
-			$table->bigInteger('rasio_total_modal');
 			$table->bigInteger('rasio_total_penjualan');
 			$table->bigInteger('rasio_total_pengeluaran');
+			$table->bigInteger('modal_awal');
+			$table->bigInteger('modal_sendiri');
+			$table->bigInteger('modal_luar');
+
+			$table->float('modal_perimbangan');
+			$table->bigInteger('laba_usaha');
 			$table->float('rasio_likuiditas');
 			$table->float('rasio_solvabilitas');
 			$table->float('rasio_profitabilitas');
+
+			$table->tinyInteger('modal_awal_score');
+			$table->tinyInteger('modal_sendiri_score');
+			$table->tinyInteger('modal_luar_score');
+			$table->tinyInteger('modal_perimbangan_score');
+			$table->tinyInteger('laba_usaha_score');
+			$table->tinyInteger('rasio_likuiditas_score');
+			$table->tinyInteger('rasio_solvabilitas_score');
+			$table->tinyInteger('rasio_profitabilitas_score');
+
+			$table->tinyInteger('hubungan_pinjaman');
+			$table->tinyInteger('hubungan_frekuensi');
+			$table->tinyInteger('hubungan_internal');
+			$table->tinyInteger('hubungan_eksternal');
 
 			// Pemenuhan tenaga kerja
 			$table->tinyInteger('tk_jumlah');
@@ -169,7 +174,7 @@ class CreateTableKuesioner2 extends Migration {
 	public function down()
 	{
 		//
-		Schema::drop('kuesioners2');
+		Schema::drop('kuesioner_new');
 	}
 
 }

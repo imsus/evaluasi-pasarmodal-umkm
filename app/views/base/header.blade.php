@@ -15,7 +15,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         @if (Auth::check())
-			<li @if ( Request::segment(1)=='kuesioner' ) { class="active" } @endif><a href="/kuesioner"><span class="glyphicon glyphicon-stats"></span> Kuesioner</a>
+			<li @if ( Request::segment(1)=='kuesioner' ) { class="active" } @endif><a href="/kuesioner-new"><span class="glyphicon glyphicon-stats"></span> Kuesioner</a>
 			</li>
 		@endif
 		<li @if ( Request::segment(1)=='pengantar' ) { class="active" } @endif><a href="/pengantar"><span class="glyphicon glyphicon-book"></span> Pengantar Pasar Modal</a>
@@ -32,7 +32,7 @@
 			<a href="/logout" class="btn btn-danger navbar-btn"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
       	@else
       		<p class="navbar-text">Anda belum login</p>
-			<a href="/login" class="btn btn-primary navbar-btn"><span class="glyphicon glyphicon-log-out"></span> Login</a>
+			<a href="/login" class="btn btn-primary navbar-btn"><span class="glyphicon glyphicon-log-in"></span> Login</a>
       	@endif
       </div>
     </div><!-- /.navbar-collapse -->

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="umkm">
 
 <head>
 	<title>Aplikasi Evaluasi UMKM Pasar Modal</title>
@@ -15,7 +15,10 @@
     @yield('content')
 
 	@include('base.dialog')
-    @include('base.script')
+
+	@section('script')
+		@include('base.script')
+	@show
 </body>
 
 </html>

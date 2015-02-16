@@ -44,7 +44,7 @@ class HomeController extends BaseController {
 
 		if(Auth::attempt($credentials))
 		{
-			if(Auth::check()) return Redirect::to('kuesioner');
+			if(Auth::check()) return Redirect::to('kuesioner-new');
 		}
 			return Redirect::to('/');
 	}

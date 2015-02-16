@@ -7,7 +7,7 @@
 	    <p class="lead">Aplikasi ini bertujuan untuk memudahkan pengguna untuk mengukur sejauh mana kinerja Usaha Mikro Kecil Menengah agar mereka mampu memasuki Pasar Modal</p>
 	    <p>
 	    @if (Auth::check())
-	      <a href="/kuesioner" class="btn btn-primary btn-lg" role="button">Kuesioner</a>
+	      <a href="/kuesioner-new" class="btn btn-primary btn-lg" role="button">Kuesioner</a>
 	    @else
 	      <a href="/login" class="btn btn-primary btn-lg" role="button">Login</a>
 	    @endif
