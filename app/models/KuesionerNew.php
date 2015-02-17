@@ -245,11 +245,11 @@ class KuesionerNew extends Eloquent {
 	);
 
 	public static $sarana_luas_kantor_option = array(
-		1 => '<100m2',
-		2 => '100-200',
-		3 => '200-500',
-		4 => '500-1000',
-		5 => '>1000',
+		1 => '< 100m2',
+		2 => '100 - 200m2',
+		3 => '200 - 500m2',
+		4 => '500 - 1000m2',
+		5 => '> 1000m2',
 	);
 
 	public static $sarana_kondisi_kantor_option = array(
@@ -261,19 +261,19 @@ class KuesionerNew extends Eloquent {
 	);
 
 	public static $sarana_nilai_kantor_option = array(
-		1 => '<10juta',
-		2 => '10-100juta',
-		3 => '100-250juta',
-		4 => '250-500juta',
-		5 => '>500juta',
+		1 => '< Rp10 juta',
+		2 => 'Rp10 - Rp100 juta',
+		3 => 'Rp100 - Rp250 juta',
+		4 => 'Rp250 - Rp500 juta',
+		5 => '> Rp500 juta',
 	);
 
 	public static $sarana_luas_gudang_option = array(
-		1 => '<50 m2',
-		2 => '50-100',
-		3 => '100-200',
-		4 => '200-500',
-		5 => '>500',
+		1 => '< 50m2',
+		2 => '50 - 100m2',
+		3 => '100 - 200m2',
+		4 => '200 - 500m2',
+		5 => '> 500m2',
 	);
 
 	public static $sarana_kondisi_gudang_option = array(
@@ -285,11 +285,11 @@ class KuesionerNew extends Eloquent {
 	);
 
 	public static $sarana_nilai_gudang_option = array(
-		1 => '<10 juta',
-		2 => '10-100 juta',
-		3 => '100-250 juta',
-		4 => '250-500 juta',
-		5 => '>500 juta',
+		1 => '< Rp10 juta',
+		2 => 'Rp10 - Rp100 juta',
+		3 => 'Rp100 - Rp250 juta',
+		4 => 'Rp250 - Rp500 juta',
+		5 => '> Rp500 juta',
 	);
 
 	public static $sarana_jumlah_mobil_option = array(
@@ -301,11 +301,11 @@ class KuesionerNew extends Eloquent {
 	);
 
 	public static $sarana_nilai_mobil_option = array(
-		1 => 'Rp.0',
-		2 => '<100 juta',
-		3 => '100 juta – 300 juta',
-		4 => '300 – 500 juta',
-		5 => '>500 juta',
+		1 => 'Rp0',
+		2 => '< Rp100 juta',
+		3 => 'Rp100 – Rp300 juta',
+		4 => 'Rp300 – Rp500 juta',
+		5 => '> Rp500 juta',
 	);
 
 	public static $sarana_jumlah_angkutan_option = array(
@@ -317,27 +317,27 @@ class KuesionerNew extends Eloquent {
 	);
 
 	public static $sarana_nilai_angkutan_option = array(
-		1 => 'Rp.0',
-		2 => '<100 juta',
-		3 => '100 juta – 300 juta',
-		4 => '300 – 500 juta',
+		1 => 'Rp0',
+		2 => '< Rp100 juta',
+		3 => 'Rp100 – Rp300 juta',
+		4 => 'Rp300 – Rp500 juta',
 		5 => '>500 juta',
 	);
 
 	public static $potensi_perluasan_option = array(
 		1 => 'Tidak',
-		2 => 'Jangka pendek menambah kapasitas <10%',
+		2 => 'Jangka pendek menambah kapasitas < 10%',
 		3 => 'Jangka menengah menambah kapasitas 10 – 20%',
 		4 => 'Jangka menengah menambah kapasitas 20 – 50%',
-		5 => 'Jangka panjang menambah >50%',
+		5 => 'Jangka panjang menambah > 50%',
 	);
 
 	public static $efisiensi_standar_option = array(
-		1 => 'Tidak',
-		2 => '<50%',
+		1 => 'Tidak memenuhi standar',
+		2 => '< 50% memenuhi standar',
 		3 => '50% memenuhi standar',
-		4 => '>50%',
-		5 => 'Ya',
+		4 => '> 50% memenuhi standar',
+		5 => 'Memenuhi standar',
 	);
 
 	public static $efisiensi_jumlah_option = array(
@@ -350,18 +350,18 @@ class KuesionerNew extends Eloquent {
 
 	public static $efisiensi_kapasitas_option = array(
 		1 => '10%',
-		2 => '10-25%',
-		3 => '25-50%',
-		4 => '50-75%',
-		5 => '75-100%',
+		2 => '10 - 25%',
+		3 => '25 - 50%',
+		4 => '50 - 75%',
+		5 => '75 - 100%',
 	);
 
 	public static $efisiensi_umur_option = array(
-		1 => '>10',
-		2 => '5-10',
-		3 => '3-5',
-		4 => '1-3',
-		5 => '0-1',
+		1 => '> 10 tahun',
+		2 => '5 - 10 tahun',
+		3 => '3 - 5 tahun',
+		4 => '1 - 3 tahun',
+		5 => '0 - 1 tahun',
 	);
 
 	public static $efisiensi_perawatan_option = array(
@@ -373,10 +373,10 @@ class KuesionerNew extends Eloquent {
 	);
 
 	public static $efisiensi_rendemen_option = array(
-		1 => '<30%',
-		2 => '32-40',
-		3 => '40-55',
-		4 => '55-70',
+		1 => '< 30%',
+		2 => '32 - 40%',
+		3 => '40 - 55%',
+		4 => '55 - 70%',
 		5 => '> 80%',
 	);
 
@@ -389,19 +389,19 @@ class KuesionerNew extends Eloquent {
 	);
 
 	public static $energi_pln_option = array(
-		1 => '<2200 watt',
-		2 => '2200-4400',
-		3 => '10600-23.000',
-		4 => '24.000-53.000',
-		5 => '>53.000',
+		1 => '< 2.200 watt',
+		2 => '2.200 - 4.400 watt',
+		3 => '10.600 - 23.000 watt',
+		4 => '24.000 - 53.000 watt',
+		5 => '> 53.000 watt',
 	);
 
 	public static $energi_genset_option = array(
-		1 => '<2200 watt',
-		2 => '2200-4400',
-		3 => '10600-23.000',
-		4 => '24.000-53.000',
-		5 => '>53.000',
+		1 => '< 2.200 watt',
+		2 => '2.200 - 4.400 watt',
+		3 => '10.600 - 23.000 watt',
+		4 => '24.000 - 53.000 watt',
+		5 => '> 53.000 watt',
 	);
 
 	public static $alternatif_energi_option = array(
@@ -430,10 +430,10 @@ class KuesionerNew extends Eloquent {
 
 	public static $hubungan_frekuensi_option = array(
 		1 => 'Tidak pernah',
-		2 => '1-3 kali',
-		3 => '3-6 kali',
-		4 => '6-10 kali',
-		5 => '>10 Kali',
+		2 => '1 - 3 kali',
+		3 => '3 - 6 kali',
+		4 => '6 - 10 kali',
+		5 => '> 10 Kali',
 	);
 
 	public static $hubungan_internal_option = array(
@@ -452,40 +452,40 @@ class KuesionerNew extends Eloquent {
 	);
 
 	public static $tk_jumlah_option = array(
-		1 => '<5 orang',
-		2 => '5-10',
-		3 => '10-20',
-		4 => '20-50',
-		5 => '>50',
+		1 => '< 5 orang',
+		2 => '5 - 10 orang',
+		3 => '10 - 20 orang',
+		4 => '20 - 50 orang',
+		5 => '> 50 orang',
 	);
 
 	public static $tk_kompetisi_option = array(
-		1 => '<10% memenuhi kompetensi',
-		2 => '10%-15%',
-		3 => '15%-25%',
-		4 => '25%-40%',
-		5 => '>40%',
+		1 => '< 10% memenuhi kompetensi',
+		2 => '10% - 15% memenuhi kompetensi',
+		3 => '15% - 25% memenuhi kompetensi',
+		4 => '25% - 40% memenuhi kompetensi',
+		5 => '> 40% memenuhi kompetensi',
 	);
 
 	public static $produktif_jam_option = array(
-		1 => '<20 jam',
-		2 => '20-25',
-		3 => '25-30',
-		4 => '30-35',
-		5 => '>35',
+		1 => '< 20 jam',
+		2 => '20 - 25 jam',
+		3 => '25 - 30 jam',
+		4 => '30 - 35 jam',
+		5 => '> 35 jam',
 	);
 
 	public static $produktif_shift_option = array(
-		1 => '<1',
-		2 => '1',
-		3 => '2',
-		4 => '3',
-		5 => '>3',
+		1 => '< 1 shift',
+		2 => '1 shift',
+		3 => '2 shift',
+		4 => '3 shift',
+		5 => '> 3 shift',
 	);
 
 	public static $produktif_upah_option = array(
-		1 => '<50% dari UMK/UMP',
-		2 => '50%-99% dari UMK/UMP',
+		1 => '< 50% dari UMK/UMP',
+		2 => '50% - 99% dari UMK/UMP',
 		3 => 'Sama dengan UMK/UMP',
 		4 => '10% diatas UMK/UMP',
 		5 => '> 10% diatas UMK/UMP',
@@ -512,15 +512,15 @@ class KuesionerNew extends Eloquent {
 		2 => '2 – 3 Produk',
 		3 => '4 – 5 Produk',
 		4 => '6 – 7 Produk',
-		5 => '> 7',
+		5 => '> 7 Produk',
 	);
 
 	public static $mix_price_option = array(
-		1 => '>10% Lebih tinggi dari pesaing',
-		2 => '<10% Lebih tinggi dari pesaing',
+		1 => '> 10% Lebih tinggi dari pesaing',
+		2 => '< 10% Lebih tinggi dari pesaing',
 		3 => 'Sama dengan harga pesaing',
-		4 => '<10% lebih rendah dari pesaing',
-		5 => '>10% lebih rendah dari pesaing',
+		4 => '< 10% lebih rendah dari pesaing',
+		5 => '> 10% lebih rendah dari pesaing',
 	);
 
 	public static $mix_place_option = array(
@@ -533,31 +533,31 @@ class KuesionerNew extends Eloquent {
 
 	public static $mix_promotion_option = array(
 		1 => 'tidak ada biaya promosi',
-		2 => 'biaya promosi <5 juta',
-		3 => '5-20 juta',
-		4 => '20-50 juta',
-		5 => '>50 juta',
+		2 => 'biaya promosi < Rp5 juta',
+		3 => 'Rp5 - Rp20 juta',
+		4 => 'Rp20 - Rp50 juta',
+		5 => '> Rp50 juta',
 	);
 
 	public static $market_share_option = array(
-		1 => '<5%',
-		2 => '5-10%',
-		3 => '11-20%',
-		4 => '21-25%',
-		5 => '>26%',
+		1 => '< 5%',
+		2 => '5 - 10%',
+		3 => '11 - 20%',
+		4 => '21 - 25%',
+		5 => '> 26%',
 	);
 
 	public static $market_coverage_option = array(
-		1 => 'Seluruhnya pasar local',
-		2 => '>50% pasar local, sisanya nasional',
+		1 => 'Seluruhnya pasar lokal',
+		2 => '> 50% pasar lokal, sisanya nasional',
 		3 => 'Seluruhnya pasar nasional domestic',
-		4 => '<50% ekspor',
-		5 => '>50% ekspor',
+		4 => '< 50% ekspor',
+		5 => '> 50% ekspor',
 	);
 
 	public static $market_competition_option = array(
 		1 => 'Tidak ada persaingan',
-		2 => 'Persaingan ketat di tingkat local',
+		2 => 'Persaingan ketat di tingkat lokal',
 		3 => 'Persaingan ketat di tingkat regional',
 		4 => 'Persaingan ketat di tingkat nasional',
 		5 => 'Persaingan ketat di tingkat ekspor',
