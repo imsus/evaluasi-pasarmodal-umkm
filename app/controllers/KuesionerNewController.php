@@ -565,7 +565,7 @@ class KuesionerNewController extends \BaseController {
 		else
 			{ $marketing_coverage_msg = 'Pertahankan cakupan pasar Anda agar dapat mencapai pasar internasional lebih banyak.'; }
 
-		$kuesioner->saran_marketing = $marketing_strat_msg . ' ' . $marketing_mix_msg . ' ' . $marketing_share_msg . ' ' . $marketing_share_msg;
+		$kuesioner->saran_marketing = $marketing_strat_msg . ' ' . $marketing_mix_msg . ' ' . $marketing_share_msg . ' ' . $marketing_coverage_msg;
 
 		$kuesioner->save();
 		return Redirect::to('kuesioner-new/detail/' . $kuesioner->id);
@@ -584,6 +584,20 @@ class KuesionerNewController extends \BaseController {
 		$kuesioner = KuesionerNew::find($id);
 		$kuesioner->delete();
 		return Redirect::to('kuesioner-new');
+	}
+
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function getPrint($id)
+	{
+		//
+		$kuesioner = KuesionerNew::find($id);
+		$pdf = PDF::loadView('pdf.single', array('kuesioner' => $kuesioner));
+		return $pdf->stream();
 	}
 
 

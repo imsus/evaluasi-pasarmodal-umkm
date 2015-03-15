@@ -16,6 +16,7 @@
 			<div class="btn-group btn-group-justified page-navigation">
 				<div class="btn-group"><a href="/kuesioner-new" type="button" class="btn btn-default"><span class="glyphicon glyphicon-home"></span> Kembali</a></div>
 				<div class="btn-group"><a href="/kuesioner-new/edit/{{ $kuesioner->id }}" type="button" class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span> Edit</a></div>
+				<div class="btn-group"><a href="/kuesioner-new/print/{{ $kuesioner->id }}" type="button" class="btn btn-info"><span class="glyphicon glyphicon-print"></span> Print</a></div>
 			</div>
 		</div>
 	</div>
@@ -50,7 +51,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading"><h3>Aspek Manajerial <small>{{ $kuesioner->saran_manajerial_score }}/105</small></h3></div>
 				<div class="panel-body">
-					<h4>Dokumen Legalitas Perusahaan </h4>
+					<h4>Dokumen Legalitas Perusahaan</h4>
 					<dl class="dl-horizontal">
 						<dt>Akte Pendirian</dt><dd>{{ KuesionerNew::$dokumen_akte_option[$kuesioner->dokumen_akte] }}</dd>
 						<dt>Tahun Terbit Surat</dt><dd>{{ $kuesioner->dokumen_tahun }}</dd>

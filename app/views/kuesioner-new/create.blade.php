@@ -407,7 +407,7 @@
 
 		<br><br><br>
 
-		<input class="btn btn-default btn-lg btn-block" type="submit" value="Submit">
+		<input class="btn btn-default btn-primary btn-lg btn-block" type="submit" value="Submit">
 
 	</div>
 	{{ Form::close() }}

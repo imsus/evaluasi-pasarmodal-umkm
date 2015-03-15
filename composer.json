@@ -5,10 +5,11 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
-		"laravel/framework": "4.2.*"
+		"laravel/framework": "4.2.*",
+		"barryvdh/laravel-dompdf": "0.4.*"
 	},
 	"require-dev": {
-	    "anouar/fpdf": "dev-master"
+
 	},
 	"autoload": {
 		"classmap": [

@@ -2,9 +2,9 @@
 
 @section('content')
 <style>
-	#kuesioner>table>tbody>tr>td { vertical-align: middle }
+	#kuesioner>table>tbody>tr>td { vertical-align: middle;}
 	.table-hover>tbody>tr .option{ visibility: hidden;}
-	.table-hover>tbody>tr:hover .option{ visibility: visible}
+	.table-hover>tbody>tr:hover .option{ visibility: visible;}
 </style>
 <div class="container">
 	<div class="row">
@@ -40,6 +40,7 @@
 					<div class="btn-group btn-group-sm option pull-right">
 						<a href="/kuesioner-new/detail/{{ $kuesioner->id }}" class="btn btn-default btn-success"><span class="glyphicon glyphicon-check"></span> Detail</a>
 						<a href="/kuesioner-new/edit/{{ $kuesioner->id }}" class="btn btn-default btn-info"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+						<a href="/kuesioner-new/print/{{ $kuesioner->id }}" class="btn btn-default btn-info"><span class="glyphicon glyphicon-print"></span> Print</a>
 						<a href="/kuesioner-new/delete/{{ $kuesioner->id }}" class="btn btn-default btn-danger" type="button" onclick="return window.confirm('Data akan dihapus secara permanen.\nApakah Anda Yakin?')"><span class="glyphicon glyphicon-trash"></span> Hapus</a>
 					</div></td>
 	        	</tr>
