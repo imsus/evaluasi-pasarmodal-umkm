@@ -23,6 +23,7 @@
 
     <script src="https://cdn.jsdelivr.net/combine/npm/vue@2/dist/vue.min.js,npm/@fortawesome/fontawesome@1,npm/@fortawesome/fontawesome-free-regular@5,npm/@fortawesome/fontawesome-free-brands@5,npm/popper.js@1,npm/jquery@3/dist/jquery.slim.min.js,npm/bootstrap@4/dist/js/bootstrap.min.js"></script>
     <script defer src="/js/fontawesome.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4.2.1/dist/masonry.pkgd.min.js"></script>
 	  @stack('js')
 </body>
 

@@ -7,12 +7,12 @@
 	    <p class="lead">Aplikasi ini bertujuan untuk memudahkan pengguna untuk mengukur sejauh mana kinerja Usaha Mikro Kecil Menengah agar mereka mampu memasuki Pasar Modal</p>
 	    <p>
 	    @auth
-	      <a href="/kuesioner-new" class="btn btn-primary btn-lg" role="button">Kuesioner</a>
+	      <a href="{{ route('questionnaire.index') }}" class="btn btn-primary btn-lg" role="button">Kuesioner</a>
 	    @else
-	      <a href="/login" class="btn btn-primary btn-lg" role="button">Login</a>
+	      <a href="{{ route('login') }}" class="btn btn-primary btn-lg" role="button">Login</a>
 	    @endauth
-	    <a href="/pengantar" class="btn btn-default btn-lg" role="button">Pengantar</a>
-	    <a href="/panduan" class="btn btn-default btn-lg" role="button">Panduan</a>
+	    <a href="{{ route('home.pengantar') }}" class="btn btn-default btn-lg" role="button">Pengantar</a>
+	    <a href="{{ route('home.panduan') }}" class="btn btn-default btn-lg" role="button">Panduan</a>
 	    </p>
 	  </div>
 	</div>

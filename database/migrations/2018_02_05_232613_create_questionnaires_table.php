@@ -18,7 +18,7 @@ class CreateQuestionnairesTable extends Migration
 	    	$table->bigIncrements('id');
 	        $table->timestamps();
 	        $table->softDeletes();
-	        $table->string('user');
+	        $table->string('user_id');
 	        // Kontak Perusahaan
 			$table->string('kontak_nama');
 			$table->boolean('kontak_gopublik')->default(0);
@@ -37,7 +37,7 @@ class CreateQuestionnairesTable extends Migration
 			$table->smallInteger('status_karyawan')->nullable();
 			// Dokumen legalitas perusahaan
 			$table->string('dokumen_akte');
-			$table->string('dokumen_tahun');
+			$table->string('dokumen_tahun')->nullable();
 			$table->boolean('dokumen_npwp')->default(0);
 			$table->boolean('dokumen_siup')->default(0);
 			$table->boolean('dokumen_tdp')->default(0);
@@ -82,35 +82,36 @@ class CreateQuestionnairesTable extends Migration
 			// Inovasi produk dan proses produksi
 			$table->tinyInteger('inovasi_produk');
 			// Analisa aspek rasio keuangan
-			$table->bigInteger('rasio_kas');
-			$table->bigInteger('rasio_piutang');
-			$table->bigInteger('rasio_persediaan');
-			$table->bigInteger('rasio_hutang_lancar');
-			$table->bigInteger('rasio_hutang_pendek');
-			$table->bigInteger('rasio_tanah');
-			$table->bigInteger('rasio_bangunan');
-			$table->bigInteger('rasio_mesin');
-			$table->bigInteger('rasio_kendaraan');
-			$table->bigInteger('rasio_inventaris');
-			$table->bigInteger('rasio_hutang_panjang');
-			$table->bigInteger('rasio_total_penjualan');
-			$table->bigInteger('rasio_total_pengeluaran');
-			$table->bigInteger('modal_awal');
-			$table->bigInteger('modal_sendiri');
-			$table->bigInteger('modal_luar');
-			$table->float('modal_perimbangan');
-			$table->bigInteger('laba_usaha');
-			$table->float('rasio_likuiditas');
-			$table->float('rasio_solvabilitas');
-			$table->float('rasio_profitabilitas');
-			$table->tinyInteger('modal_awal_score');
-			$table->tinyInteger('modal_sendiri_score');
-			$table->tinyInteger('modal_luar_score');
-			$table->tinyInteger('modal_perimbangan_score');
-			$table->tinyInteger('laba_usaha_score');
-			$table->tinyInteger('rasio_likuiditas_score');
-			$table->tinyInteger('rasio_solvabilitas_score');
-			$table->tinyInteger('rasio_profitabilitas_score');
+			$table->bigInteger('rasio_kas')->nullable();
+			$table->bigInteger('rasio_piutang')->nullable();
+			$table->bigInteger('rasio_persediaan')->nullable();
+			$table->bigInteger('rasio_hutang_lancar')->nullable();
+			$table->bigInteger('rasio_hutang_pendek')->nullable();
+			$table->bigInteger('rasio_tanah')->nullable();
+			$table->bigInteger('rasio_bangunan')->nullable();
+			$table->bigInteger('rasio_mesin')->nullable();
+			$table->bigInteger('rasio_kendaraan')->nullable();
+			$table->bigInteger('rasio_inventaris')->nullable();
+			$table->bigInteger('rasio_hutang_panjang')->nullable();
+			$table->bigInteger('rasio_total_penjualan')->nullable();
+			$table->bigInteger('rasio_total_pengeluaran')->nullable();
+			$table->bigInteger('modal_awal')->nullable();
+			$table->bigInteger('modal_sendiri')->nullable();
+			$table->bigInteger('modal_luar')->nullable();
+			// $table->float('modal_perimbangan')->nullable(); // Calculated
+			// $table->bigInteger('laba_usaha')->nullable(); // Calculated
+			// $table->float('rasio_likuiditas')->nullable(); // Calculated
+			// $table->float('rasio_solvabilitas')->nullable(); // Calculated
+			// $table->float('rasio_profitabilitas')->nullable(); // Calculated
+			// $table->tinyInteger('modal_awal_score')->nullable(); // Calculated
+			// $table->tinyInteger('modal_sendiri_score')->nullable(); // Calculated
+			// $table->tinyInteger('modal_luar_score')->nullable(); // Calculated
+			// $table->tinyInteger('modal_perimbangan_score')->nullable(); // Calculated
+			// $table->tinyInteger('laba_usaha_score')->nullable(); // Calculated
+			// $table->tinyInteger('rasio_likuiditas_score')->nullable(); // Calculated
+			// $table->tinyInteger('rasio_solvabilitas_score')->nullable(); // Calculated
+            // $table->tinyInteger('rasio_profitabilitas_score')->nullable(); // Calculated
+            // Hubungan dengan Perbankan
 			$table->tinyInteger('hubungan_pinjaman');
 			$table->tinyInteger('hubungan_frekuensi');
 			$table->tinyInteger('hubungan_internal');
@@ -138,20 +139,20 @@ class CreateQuestionnairesTable extends Migration
 			// Persaingan
 			$table->tinyInteger('market_competition');
 			// Output
-			$table->string('output_skor')->nullable();
-			$table->string('output_keputusan')->nullable();
-			$table->string('output_keputusan_detail')->nullable();
+			// $table->string('output_skor')->nullable(); // Calculated
+			// $table->string('output_keputusan')->nullable(); // Calculated
+			// $table->string('output_keputusan_detail')->nullable(); // Calculated
 			// Saran
-			$table->string('saran_manajerial_score')->nullable();
-			$table->string('saran_manajerial')->nullable();
-			$table->string('saran_mesin_score')->nullable();
-			$table->string('saran_mesin')->nullable();
-			$table->string('saran_keuangan_score')->nullable();
-			$table->string('saran_keuangan')->nullable();
-			$table->string('saran_sdm_score')->nullable();
-			$table->string('saran_sdm')->nullable();
-			$table->string('saran_marketing_score')->nullable();
-			$table->string('saran_marketing')->nullable();
+			// $table->string('saran_manajerial_score')->nullable(); // Calculated
+			// $table->string('saran_manajerial')->nullable(); // Calculated
+			// $table->string('saran_mesin_score')->nullable(); // Calculated
+			// $table->string('saran_mesin')->nullable(); // Calculated
+			// $table->string('saran_keuangan_score')->nullable(); // Calculated
+			// $table->string('saran_keuangan')->nullable(); // Calculated
+			// $table->string('saran_sdm_score')->nullable(); // Calculated
+			// $table->string('saran_sdm')->nullable(); // Calculated
+			// $table->string('saran_marketing_score')->nullable(); // Calculated
+			// $table->string('saran_marketing')->nullable(); // Calculated
 	    });
     }
 

@@ -11,6 +11,483 @@ class Questionnaire extends Model
     
     protected $dates = ['deleted_at'];
 
+    protected $casts = [
+        'kontak_gopublik' => 'boolean',
+        'dokumen_npwp' => 'boolean',
+        'dokumen_siup' => 'boolean',
+        'dokumen_tdp' => 'boolean',
+        'dokumen_iui' => 'boolean',
+        'dokumen_situ' => 'boolean',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(App\User::class);
+    }
+
+    public function getModalPerimbanganAttribute()
+    {
+        if ($this->attributes['modal_sendiri'] + $this->attributes['modal_luar'] === 0) {
+            return 0;
+        }
+
+        return round($this->attributes['modal_luar'] / ($this->attributes['modal_sendiri'] + $this->attributes['modal_luar']), 2);
+    }
+
+    public function getLabaUsahaAttribute()
+    {
+        return ($this->attributes['rasio_total_penjualan'] - $this->attributes['rasio_total_pengeluaran']);
+    }
+
+    public function getRasioLikuiditasAttribute()
+    {
+        if ($this->attributes['rasio_hutang_lancar'] + $this->attributes['rasio_hutang_pendek'] === 0) {
+            return 0;
+        }
+
+        return round(($this->attributes['rasio_kas'] + $this->attributes['rasio_piutang'] + $this->attributes['rasio_persediaan']) / ($this->attributes['rasio_hutang_lancar'] + $this->attributes['rasio_hutang_pendek']), 2);
+    }
+
+    public function getRasioSolvabilitasAttribute()
+    {
+        if ($this->attributes['rasio_hutang_lancar'] + $this->attributes['rasio_hutang_pendek'] + $this->attributes['rasio_hutang_panjang'] === 0) {
+            return 0;
+        }
+
+        return round(($this->attributes['rasio_kas'] + $this->attributes['rasio_piutang'] + $this->attributes['rasio_persediaan'] + $this->attributes['rasio_tanah'] + $this->attributes['rasio_bangunan'] + $this->attributes['rasio_mesin'] + $this->attributes['rasio_kendaraan'] + $this->attributes['rasio_inventaris']) / ($this->attributes['rasio_hutang_lancar'] + $this->attributes['rasio_hutang_pendek'] + $this->attributes['rasio_hutang_panjang']), 2);
+    }
+
+    public function getRasioProfitabilitas()
+    {
+        return round(($this->attributes['laba_usaha']) / ($this->attributes['modal_sendiri'] + $this->attributes['modal_luar']), 2);
+    }
+
+    public function getModalAwalScoreAttribute()
+    {
+        if ($this->modal_awal <= 10000000) {
+            return 1;
+        } elseif ($this->modal_awal <= 20000000) {
+            return 2;
+        } elseif ($this->modal_awal <= 50000000) {
+            return 3;
+        } elseif ($this->modal_awal <= 100000000) {
+            return 4;
+        } elseif ($this->modal_awal > 100000000) {
+            return 5;
+        }
+    }
+
+    public function getModalSendiriScoreAttribute($value)
+    {   
+        if ($this->modal_sendiri <= 10000000) {
+            return 1;
+        } elseif ($this->modal_sendiri <= 20000000) {
+            return 2;
+        } elseif ($this->modal_sendiri <= 50000000) {
+            return 3;
+        } elseif ($this->modal_sendiri <= 100000000) {
+            return 4;
+        } elseif ($this->modal_sendiri > 100000000) {
+            return 5;
+        }
+    }
+
+    public function getModalLuarScoreAttribute()
+    {   
+        if ($this->modal_luar <= 10000000) {
+            return 1;
+        } elseif ($this->modal_luar <= 20000000) {
+            return 2;
+        } elseif ($this->modal_luar <= 50000000) {
+            return 3;
+        } elseif ($this->modal_luar <= 100000000) {
+            return 4;
+        } elseif ($this->modal_luar > 100000000) {
+            return 5;
+        }
+    }
+
+    public function getModalPerimbanganScore()
+    {
+        if ($this->modal_perimbangan == 1) {
+            return 1;
+        } elseif ($this->modal_perimbangan >= 0.75) {
+            return 2;
+        } elseif ($this->modal_perimbangan >= 0.5) {
+            return 3;
+        } elseif ($this->modal_perimbangan >= 0.25) {
+            return 4;
+        } elseif ($this->modal_perimbangan >= 0) {
+            return 5;
+        }
+    }
+
+    public function getLabaUsahaScoreAttribute()
+    {
+        if ($this->laba_usaha <= 10000000) {
+            return 1;
+        } elseif ($this->laba_usaha <= 20000000) {
+            return 2;
+        } elseif ($this->laba_usaha <= 50000000) {
+            return 3;
+        } elseif ($this->laba_usaha <= 100000000) {
+            return 4;
+        } elseif ($this->laba_usaha > 100000000) {
+            return 5;
+        }
+    }
+
+    public function getRasioLikuiditasScoreAttribute()
+    {
+        if ($this->rasio_likuiditas < 0.5 || $this->rasio_likuiditas > 2) {
+            return 1;
+        } elseif ($this->rasio_likuiditas >= 0.5 && $this->rasio_likuiditas < 0.75) {
+            return 2;
+        } elseif ($this->rasio_likuiditas >= 0.75 && $this->rasio_likuiditas < 1) {
+            return 3;
+        } elseif ($this->rasio_likuiditas >= 1 && $this->rasio_likuiditas < 1.5) {
+            return 4;
+        } elseif ($this->rasio_likuiditas >= 1.5 && $this->rasio_likuiditas < 2) {
+            return 5;
+        }
+    }
+
+    public function getRasioSolvabilitasScoreAttribute()
+    {
+        if ($this->rasio_solvabilitas < 0.5) {
+            return 1;
+        } elseif ($this->rasio_solvabilitas >= 0.5 && $this->rasio_solvabilitas < 1) {
+            return 2;
+        } elseif ($this->rasio_solvabilitas >= 1 && $this->rasio_solvabilitas < 1.5) {
+            return 3;
+        } elseif ($this->rasio_solvabilitas >= 1.5 && $this->rasio_solvabilitas < 2) {
+            return 4;
+        } elseif ($this->rasio_solvabilitas > 2) {
+            return 5;
+        }
+    }
+
+    public function getRasioProfitabilitiasScoreAttribute()
+    {
+        if ($this->rasio_profitabilitas < 0.05) {
+            return 1;
+        } elseif ($this->rasio_profitabilitas >= 0.05 && $this->rasio_profitabilitas < 0.1) {
+            return 2;
+        } elseif ($this->rasio_profitabilitas >= 0.1 && $this->rasio_profitabilitas < 0.15) {
+            return 3;
+        } elseif ($this->rasio_profitabilitas >= 0.15 && $this->rasio_profitabilitas < 0.25) {
+            return 4;
+        } elseif ($this->rasio_profitabilitas >= 0.25) {
+            return 5;
+        }
+    }
+
+    public function getOutputSkorAttribute()
+    {
+        return array_sum([
+            $this->saran_manajerial_score,
+            $this->saran_mesin_score,
+            $this->saran_keuangan_score,
+            $this->saran_sdm_score,
+            $this->saran_marketing_score,
+        ]);
+    }
+
+    public function getOutputSkorPercentAttribute()
+    {
+        return round($this->getOutputSkorAttribute() * 100 / config('custom.total_output'));
+    }
+
+    public function getOutputKeputusanAttribute()
+    {
+        if ($this->attributes['kontak_gopublik']) {
+            return 'Anda sudah Go Publik';
+        } else {
+            if (($this->saran_manajerial_score / 290) <= 1) {
+                return 'Emiten dan Invest (Go Publik)';
+            } elseif (($this->saran_manajerial_score / 290) <= 0.67) {
+                return 'Invest';
+            } elseif (($this->saran_manajerial_score / 290) <= 0.33) {
+                return 'Tidak Go Publik dan Invest';
+            }
+        }
+    }
+
+    public function getSaranManajerialScoreAttribute()
+    {
+        return array_sum([
+            $this->attributes['dokumen_npwp'],
+            $this->attributes['dokumen_siup'],
+            $this->attributes['dokumen_tdp'],
+            $this->attributes['dokumen_iui'],
+            $this->attributes['dokumen_situ'],
+            $this->attributes['sm_punya'],
+            $this->attributes['sm_sertifikasi'],
+            $this->attributes['sm_so'],
+            $this->attributes['sm_jobdesc'],
+            $this->attributes['sm_sop'],
+            $this->attributes['sm_arsip'],
+            $this->attributes['sm_audit'],
+            $this->attributes['sm_tqc'],
+            $this->attributes['sm_satisfaction'],
+            $this->attributes['sarana_luas_kantor'],
+            $this->attributes['sarana_kondisi_kantor'],
+            $this->attributes['sarana_nilai_kantor'],
+            $this->attributes['sarana_luas_gudang'],
+            $this->attributes['sarana_kondisi_gudang'],
+            $this->attributes['sarana_nilai_gudang'],
+            $this->attributes['sarana_jumlah_mobil'],
+            $this->attributes['sarana_nilai_mobil'],
+            $this->attributes['sarana_jumlah_angkutan'],
+            $this->attributes['sarana_nilai_angkutan'],
+            $this->attributes['potensi_perluasan'],
+        ]);
+    }
+
+    public function getSaranManajerialScorePercentAttribute()
+    {
+        return round($this->getSaranManajerialScoreAttribute() * 100 / config('custom.total_manajerial'));
+    }
+
+    public function getSaranManajerialAttribute()
+    {
+        $manajerial_dokumen = array_sum([
+            $this->attributes['dokumen_npwp'],
+            $this->attributes['dokumen_siup'],
+            $this->attributes['dokumen_tdp'],
+            $this->attributes['dokumen_iui'],
+            $this->attributes['dokumen_situ'],
+        ]);
+
+        $manajerial_sistem = array_sum([
+            $this->attributes['sm_punya'],
+            $this->attributes['sm_sertifikasi'],
+            $this->attributes['sm_so'],
+            $this->attributes['sm_jobdesc'],
+            $this->attributes['sm_sop'],
+            $this->attributes['sm_arsip'],
+            $this->attributes['sm_audit'],
+            $this->attributes['sm_tqc'],
+            $this->attributes['sm_satisfaction'],
+        ]);
+
+        if (($manajerial_dokumen / 5) < 0.5) {
+            $manajerial_dokumen_msg = 'Lengkapi dokumen legalitas perusahaan Anda agar mendapatkan poin lebih tinggi.';
+        } else {
+            $manajerial_dokumen_msg = 'Pertahankan kelengkapan dokumen legalitas perusahaan Anda.';
+        }
+
+        if (($manajerial_sistem / 45) < 0.5) {
+            $manajerial_sistem_msg = 'Perbaiki Sistem Manajemen perusahaan Anda agar pengelolaan perusahaan Anda menjadi lebih teratur.';
+        } else {
+            $manajerial_sistem_msg = 'Pertahankan Sistem Manajemen di perusahaan Anda.';
+        }
+
+        return $manajerial_dokumen_msg . ' ' . $manajerial_sistem_msg;
+    }
+
+    public function getSaranMesinScoreAttribute()
+    {
+        return array_sum([
+            $this->attributes['efisiensi_standar'],
+            $this->attributes['efisiensi_jumlah'],
+            $this->attributes['efisiensi_kapasitas'],
+            $this->attributes['efisiensi_umur'],
+            $this->attributes['efisiensi_perawatan'],
+            $this->attributes['efisiensi_rendemen'],
+            $this->attributes['efisiensi_variasi'],
+            $this->attributes['energi_pln'],
+            $this->attributes['energi_genset'],
+            $this->attributes['alternatif_energi'],
+            $this->attributes['inovasi_produk'],
+        ]);
+    }
+
+    public function getSaranMesinScorePercentAttribute()
+    {
+        return round($this->getSaranMesinScoreAttribute() * 100 / config('custom.total_mesin'));
+    }
+
+    public function getSaranMesinAttribute()
+    {
+        $mesin_efisiensi = array_sum([
+            $this->attributes['efisiensi_standar'],
+            $this->attributes['efisiensi_jumlah'],
+            $this->attributes['efisiensi_kapasitas'],
+            $this->attributes['efisiensi_umur'],
+            $this->attributes['efisiensi_perawatan'],
+            $this->attributes['efisiensi_rendemen'],
+            $this->attributes['efisiensi_variasi'],
+        ]);
+
+        $mesin_inovasi = $this->attributes['inovasi_produk'];
+
+        if (($mesin_efisiensi / 35) < 0.5) {
+            $mesin_efisiensi_msg = 'Tingkatkan efisiensi Produksi Anda agar produktivitas perusahaan Anda meningkat secara menyeluruh.';
+        } else {
+            $mesin_efisiensi_msg = 'Pertahankan efisiensi produksi dan mesin di perusahaan Anda.';
+        }
+        if (($mesin_inovasi / 5) < 0.5) {
+            $mesin_inovasi_msg = 'Tingkatkan inovasi produk dan proses produksi dalam perusahaan Anda';
+        } else {
+            $mesin_inovasi_msg = 'Pertahankan inovasi produk dan proses produksi.';
+        }
+
+        return $mesin_efisiensi_msg . ' ' . $mesin_inovasi_msg;
+    }
+
+    public function getSaranKeuanganScoreAttribute()
+    {
+        return array_sum([
+            $this->laba_usaha_score,
+            $this->modal_awal_score,
+            $this->modal_sendiri_score,
+            $this->modal_luar_score,
+            $this->modal_perimbangan_score,
+            $this->rasio_likuiditas_score,
+            $this->rasio_solvabilitas_score,
+            $this->rasio_profitabilitas_score,
+        ]);
+    }
+
+    public function getSaranKeuanganScorePercentAttribute()
+    {
+        return round($this->getSaranKeuanganScoreAttribute() * 100 / config('custom.total_keuangan'));
+    }
+
+    public function getSaranKeuanganAttribute() {
+        if ($this->rasio_likuiditas >= 2 and $this->rasio_solvabilitas >= 2 and $this->rasio_profitabilitas >= 1.5) {
+            return 'Tetap Pertahankan Likuiditas, Solvabilitas dan Profitabilitas perusahaan Anda';
+        } elseif ($this->rasio_likuiditas >= 2 and $this->rasio_solvabilitas >= 2 and $this->rasio_profitabilitas < 1.5) {
+            return 'Anda harus meningkatkan penjualan atau mengurangi cost (biaya) agar profitabilitas anda >=1.5 dan anda dapat melaksanakan go publik';
+        } elseif ($this->rasio_likuiditas >= 2 and $this->rasio_solvabilitas < 2 and $this->rasio_profitabilitas >= 1.5) {
+            return 'Anda harus menambah kas, piutang, persediaan barang, tanah, bangunan dan mesin-mesin anda dan mengurangi hutang anda baik hutang jangka panjang ataupun hutang jangka pendek agar solvabilitas anda >= 2 dan anda dapat melaksanakan go publik';
+        } elseif ($this->rasio_likuiditas >= 2 and $this->rasio_solvabilitas < 2 and $this->rasio_profitabilitas < 1.5) {
+            return 'Anda harus menambah kas, piutang, persediaan barang, tanah, bangunan dan mesin-mesin anda dan mengurangi hutang anda baik hutang jangka panjang ataupun hutang jangka pendek agar solvabilitas anda >= 2 dan anda dapat melaksanakan go publik';
+        } elseif ($this->rasio_likuiditas < 2 and $this->rasio_solvabilitas >= 2 and $this->rasio_profitabilitas >= 1.5) {
+            return 'Anda harus menambah kas, piutang, persediaan barang, tanah, bangunan dan mesin-mesin anda dan mengurangi hutang anda baik hutang jangka panjang ataupun hutang jangka pendek agar solvabilitas anda >= 2 dan anda dapat melaksanakan go publik';
+        } elseif ($this->rasio_likuiditas < 2 and $this->rasio_solvabilitas >= 2 and $this->rasio_profitabilitas < 1.5) {
+            return 'Anda harus menambah kas, piutang, atau persediaan barang anda dan mengurangi hutang anda baik hutang lancar ataupun hutang jangka pendek agar likuditas anda >= 2 selain itu Anda harus meningkatkan penjualan atau mengurangi cost (biaya) agar profitabilitas anda >=1.5 dan anda dapat melaksanakan go publik';
+        } elseif ($this->rasio_likuiditas < 2 and $this->rasio_solvabilitas < 2 and $this->rasio_profitabilitas >= 1.5) {
+            return 'Anda harus menambah kas, piutang, atau persediaan barang anda dan mengurangi hutang anda baik hutang lancar ataupun hutang jangka pendek agar likuditas anda >= 2 selain itu Anda harus menambah asset tanah, bangunan dan mesin-mesin anda dan mengurangi hutang anda baik hutang jangka panjang ataupun hutang jangka pendek agar solvabilitas anda >= 2 dan anda dapat melaksanakan go publik';
+        } elseif ($this->rasio_likuiditas < 2 and $this->rasio_solvabilitas < 2 and $this->rasio_profitabilitas < 1.5) {
+            return 'Anda harus menambah kas, piutang, atau persediaan barang anda dan mengurangi hutang anda baik hutang lancar ataupun hutang jangka pendek agar likuditas anda >= 2 selain itu Anda harus menambah asset tanah, bangunan dan mesin-mesin anda dan mengurangi hutang anda baik hutang jangka panjang ataupun hutang jangka pendek agar solvabilitas anda >= 2 dan Anda harus meningkatkan penjualan atau mengurangi cost (biaya) agar profitabilitas anda >=1.5 dan anda dapat melaksanakan go publik';
+        }
+    }
+
+    public function getSaranSdmScoreAttribute()
+    {
+        return array_sum([
+            $this->attributes['tk_jumlah'],
+            $this->attributes['tk_kompetisi'],
+            $this->attributes['produktif_jam'],
+            $this->attributes['produktif_shift'],
+            $this->attributes['produktif_upah'],
+            $this->attributes['fasilitas_tk'],
+        ]);
+    }
+
+    public function getSaranSdmScorePercentAttribute()
+    {
+        return round($this->getSaranSdmScoreAttribute() * 100 / config('custom.total_sdm'));
+    }
+
+    public function getSaranSdmAttribute()
+    {
+        $sdm_tk = array_sum([
+            $this->attributes['tk_jumlah'],
+            $this->attributes['tk_kompetisi'],
+        ]);
+
+        $sdm_produktivitas = array_sum([
+            $this->attributes['produktif_jam'],
+            $this->attributes['produktif_shift'],
+            $this->attributes['produktif_upah'],
+        ]);
+
+        $sdm_fasilitas = $this->attributes['fasilitas_tk'];
+
+        if (($sdm_tk / 10) < 0.5) {
+            $sdm_tk_msg = 'Tingkatkan jumlah tenaga kerja dan kompetensi mereka di dalam perusahaan Anda agar perusahaan dapat tumbuh lebih besar.';
+        } else {
+            $sdm_tk_msg = 'Pertahankan jumlah tenaga kerja Anda dan selalu tingkatkan kompetensi mereka.';
+        }
+
+        if (($sdm_produktivitas / 15) < 0.5) {
+            $sdm_produktivitas_msg = 'Tingkatkan produktivitas dengan meningkatkan lama jam kerja, jumlah shift, dan standar upah karyawan.';
+        } else {
+            $sdm_produktivitas_msg = 'Pertahankan produktivitas karyawan, dan selalu ikuti standar upah karyawan.';
+        }
+
+        if (($sdm_fasilitas / 5) < 0.5) {
+            $sdm_fasilitas_msg = 'Tambahkan fasilitas kepada karyawan, terutama fasilitas dasar.';
+        } else {
+            $sdm_fasilitas_msg = 'Pertahankan fasilitas-fasilitas yang diberikan dari perusahaan.';
+        }
+
+        return $sdm_tk_msg . ' ' . $sdm_produktivitas_msg . ' ' . $sdm_fasilitas_msg;
+    }
+
+    public function getSaranMarketingScoreAttribute()
+    {
+        return array_sum([
+            $this->attributes['marketing_strategy'],
+            $this->attributes['mix_product'],
+            $this->attributes['mix_price'],
+            $this->attributes['mix_place'],
+            $this->attributes['mix_promotion'],
+            $this->attributes['market_share'],
+            $this->attributes['market_coverage'],
+            $this->attributes['market_competition'],
+        ]);
+    }
+
+    public function getSaranMarketingScorePercentAttribute()
+    {
+        return round($this->getSaranMarketingScoreAttribute() * 100 / config('custom.total_marketing'));
+    }
+
+    public function getSaranMarketingAttribute() {
+        $marketing_strat = $this->attributes['marketing_strategy'];
+
+        $marketing_mix = array_sum([
+            $this->attributes['mix_product'],
+            $this->attributes['mix_price'],
+            $this->attributes['mix_place'],
+            $this->attributes['mix_promotion'],
+        ]);
+
+        $marketing_share = $this->attributes['market_share'];
+
+        $marketing_coverage = $this->attributes['market_coverage'];
+
+        if (($marketing_strat / 5) < 0.5) {
+            $marketing_strat_msg = 'Formulasikan strategi pemasaran Anda. Agar perusahaan lebih fokus.';
+        } else {
+            $marketing_strat_msg = 'Pertahankan strategi pemasaran di perusahaan Anda.';
+        }
+
+        if (($marketing_mix / 20) < 0.5) {
+            $marketing_mix_msg = 'Bauran pemasaran Anda perlu lebih ditingkatkan lagi.';
+        } else {
+            $marketing_mix_msg = 'Pertahankan konsep bauran pemasaran perusahaan Anda.';
+        }
+
+        if (($marketing_share / 5) < 0.5) {
+            $marketing_share_msg = 'Perluas lebih banyak lagi penguasaan pasar Anda.';
+        } else {
+            $marketing_share_msg = 'Pertahankan penguasaan pasar untuk produk Anda.';
+        }
+        
+        if (($marketing_coverage / 5) < 0.5) {
+            $marketing_coverage_msg = 'Tingkatkan cakupan pasar Anda. Lebih baik lagi jika dapat menembus pasar internasional.';
+        } else {
+            $marketing_coverage_msg = 'Pertahankan cakupan pasar Anda agar dapat mencapai pasar internasional lebih banyak.';
+        }
+
+        return $marketing_strat_msg . ' ' . $marketing_mix_msg . ' ' . $marketing_share_msg . ' ' . $marketing_coverage_msg;
+    }
+
     protected $fillable = [
         // Kontak Perusahaan
         'kontak_nama', 'kontak_gopublik', 'kontak_alamat', 'kontak_kota',
@@ -497,5 +974,5 @@ class Questionnaire extends Model
         3 => 'Persaingan ketat di tingkat regional',
         4 => 'Persaingan ketat di tingkat nasional',
         5 => 'Persaingan ketat di tingkat ekspor',
-    ];    
+    ];
 }

@@ -3,7 +3,7 @@
 @section('content')
 	<div class="container mt-5 w-25">
     <h2 class="text-center mb-3">Login</h2>
-    @if ($errors->count() > 0)
+    @if ($errors->any())
       @foreach ($errors->all() as $message)
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
           {{ $message }}

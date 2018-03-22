@@ -32,3 +32,5 @@ Route::prefix('kuesioner')->group(
         Route::get('/{id}/print', 'QuestionnaireController@print')->name('questionnaire.print');
     }
 );
+
+Route::get('/info', 'HomeController@phpinfo')->name('phpinfo');
