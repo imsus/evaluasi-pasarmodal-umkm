@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Questionnaire;
 use Validator;
+use PDF;
 
 class QuestionnaireController extends Controller
 {
@@ -15,7 +16,8 @@ class QuestionnaireController extends Controller
      */
     public function index()
     {
-        $questionnaires = Questionnaire::all();
+        $questionnaires = Questionnaire::latest()->get();
+
         return view('kuesioner.index', compact('questionnaires'));
     }
 
@@ -27,6 +29,7 @@ class QuestionnaireController extends Controller
     public function show($id)
     {
         $questionnaire = Questionnaire::findOrFail($id);
+
         return view('kuesioner.show', compact('questionnaire'));
     }
 
@@ -63,7 +66,8 @@ class QuestionnaireController extends Controller
 
         // dd($questionnaire);
 
-        return redirect()->route('questionnaire.show' , $questionnaire->id);
+        return redirect()->route('questionnaire.show' , $questionnaire->id)
+                         ->withMessage('Kuesioner ' . $questionnaire->id . ' sudah dibuat');
     }
 
     /**
@@ -85,7 +89,11 @@ class QuestionnaireController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request->all());
+        Validator::make($request->except(['_token']), [
+            'kontak_nama' => 'required'
+        ], [
+            'kontak_nama.required' => 'Nama perusahaan wajib diisi.'
+        ])->validate();
 
         $questionnaire = Questionnaire::findOrFail($id);
         $questionnaire->fill($request->all());
@@ -93,7 +101,8 @@ class QuestionnaireController extends Controller
 
         // dd($questionnaire);
 
-        return Redirect::to('kuesioner/detail/' . $questionnaire->id);
+        return redirect()->route('questionnaire.show', $id)
+                         ->withMessage('Kuesioner ' . $id . ' sudah diupdate');
     }
 
     /**
@@ -104,10 +113,10 @@ class QuestionnaireController extends Controller
      */
     public function delete($id)
     {
-        //
         $questionnaire = Questionnaire::find($id);
         $questionnaire->delete();
-        return Redirect::to('kuesioner');
+        return redirect()->route('questionnaire.index')
+                         ->withMessage('Kuesioner ' . $id . ' telah dihapus.');
     }
     /**
      * Remove the specified resource from storage.
@@ -117,9 +126,10 @@ class QuestionnaireController extends Controller
      */
     public function print($id)
     {
-        //
         $questionnaire = Questionnaire::find($id);
-        $pdf = PDF::loadView('pdf.single', array('kuesioner' => $questionnaire));
+        $pdf = PDF::loadView('kuesioner.print', compact(['questionnaire']));
         return $pdf->stream();
+        // return $pdf->download('kuesioner-' . $id . '.pdf');
+        // $pdf = PDF::loadView('pdf.single', array('kuesioner' => $questionnaire));
     }
 }

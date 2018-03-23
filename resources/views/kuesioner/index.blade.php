@@ -1,11 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-<style>
-	#questionnaire>table>tbody>tr>td { vertical-align: middle;}
-	.table-hover>tbody>tr .option{ visibility: hidden;}
-	.table-hover>tbody>tr:hover .option{ visibility: visible;}
-</style>
 <div class="container mt-5">
 	<div class="row flex align-items-center mb-4">
 		<div class="col-md-10"><h1 class="mb-0">Daftar Kuesioner</h1></div>
@@ -47,24 +42,26 @@
               <td>{{ $questionnaire->created_at->format('d M Y') }}</td>
               <td>{{ $questionnaire->updated_at->diffForHumans() }}</td>
               <td class="text-right">
-                <div class="btn-group btn-group-sm option">
-                  <a href="{{ route('questionnaire.show', $questionnaire->id) }}" class="btn btn-light text-success d-flex align-items-center justify-content-center">
-                    <span class="fal fa-check"></span>
-                    <span class="ml-2">Detail</span>
-                  </a>
-                  <a href="{{ route('questionnaire.edit', $questionnaire->id) }}" class="btn btn-light d-flex align-items-center justify-content-center">
-                    <span class="fal fa-edit"></span>
-                    <span class="ml-2">Edit</span>
-                  </a>
-                  <a href="{{ route('questionnaire.print', $questionnaire->id) }}" class="btn btn-light d-flex align-items-center justify-content-center">
-                    <span class="fal fa-print"></span>
-                    <span class="ml-2">Print</span>
-                  </a>
-                  <a href="{{ action('QuestionnaireController@delete', $questionnaire->id) }}" class="btn btn-light text-danger" onclick="return window.confirm('Data akan dihapus secara permanen.\nApakah Anda Yakin?') d-flex align-items-center justify-content-center">
-                    <span class="fal fa-trash"></span>
-                    <span class="ml-2">Hapus</span>
-                  </a>
-                </div>
+                {{ Form::open(['id' => 'form-' . $questionnaire->id, 'url' => action('QuestionnaireController@delete', $questionnaire->id), 'method' => 'delete', 'onsubmit' => 'ask(' . $questionnaire->id . ')']) }}
+                  <div class="btn-group btn-group-sm option">
+                    <a href="{{ route('questionnaire.show', $questionnaire->id) }}" class="btn btn-light text-success d-flex align-items-center justify-content-center">
+                      <span class="fal fa-check"></span>
+                      <span class="ml-2">Detail</span>
+                    </a>
+                    <a href="{{ route('questionnaire.edit', $questionnaire->id) }}" class="btn btn-light d-flex align-items-center justify-content-center">
+                      <span class="fal fa-edit"></span>
+                      <span class="ml-2">Edit</span>
+                    </a>
+                    <a href="{{ route('questionnaire.print', $questionnaire->id) }}" class="btn btn-light d-flex align-items-center justify-content-center">
+                      <span class="fal fa-print"></span>
+                      <span class="ml-2">Print</span>
+                    </a>
+                    <button type="submit" class="btn btn-light text-danger flex align-items-center justify-content-center">
+                      <span class="fal fa-trash"></span>
+                      <span class="ml-2">Hapus</span>
+                    </button>
+                  </div>
+                {{ Form::close() }}
               </td>
             </tr>
           @endforeach
@@ -73,3 +70,26 @@
   @endif
 </div>
 @stop
+
+@section('modal')
+  
+@endsection
+
+@push('css')
+  <style>
+    #questionnaire>table>tbody>tr>td { vertical-align: middle;}
+    .table-hover>tbody>tr .option{ visibility: hidden;}
+    .table-hover>tbody>tr:hover .option{ visibility: visible;}
+  </style>
+@endpush
+
+@push('js')
+  <script>
+    function ask(id) {
+      event.preventDefault();
+      if (confirm(`Apakah kamu yakin akan menghapus kuesioner dengan id ${id} ?`) === true) {
+        document.getElementById(`form-${id}`).submit();
+      }
+    }
+  </script>
+@endpush
