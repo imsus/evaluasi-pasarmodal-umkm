@@ -11,11 +11,11 @@
 
 	@include('includes.head')
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
-    @stack('css')
+  <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+  @stack('css')
 </head>
 
-<body style="position: relative" data-spy="scroll" data-target=".spy">
+<body class="position-relative" data-spy="scroll" data-target=".spy">
     
     {{--  @yield('modal')  --}}
 
@@ -34,10 +34,8 @@
 
     @yield('content')
 
-
-    <script src="https://cdn.jsdelivr.net/combine/npm/vue@2/dist/vue.min.js,npm/@fortawesome/fontawesome@1,npm/@fortawesome/fontawesome-free-regular@5,npm/@fortawesome/fontawesome-free-brands@5,npm/popper.js@1,npm/jquery@3/dist/jquery.slim.min.js,npm/bootstrap@4/dist/js/bootstrap.min.js"></script>
-    <script defer src="/js/fontawesome.js"></script>
-    <script src="https://unpkg.com/masonry-layout@4.2.1/dist/masonry.pkgd.min.js"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+    <script defer src="{{ asset('js/fontawesome.js') }}"></script>
 	  @stack('js')
 </body>
 

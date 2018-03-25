@@ -31,20 +31,20 @@
               <div class="col-md-8">
                 <div class="form-group">
                   {{ Form::label('kontak_nama', '1. Nama Koperasi/Perusahaan UKM') }}
-                  {{ Form::text('kontak_nama', null, ['class' => $errors->first('kontak_nama') ? 'form-control w-75 is-invalid' : 'form-control w-75' ]) }}
+                  {{ Form::text('kontak_nama', old('kontak_nama'), ['class' => $errors->first('kontak_nama') ? 'form-control w-75 is-invalid' : 'form-control w-75' ]) }}
                   <div class="invalid-feedback">{{ $errors->first('kontak_nama') }}</div>
                 </div>
                 <div class="form-group custom-control custom-checkbox">
-                  {{ Form::checkbox('kontak_gopublik', 'kontak_gopublik', null, array('id' => 'kontak_gopublik', 'class' => 'custom-control-input')) }}
+                  {{ Form::checkbox('kontak_gopublik', 'kontak_gopublik', old('kontak_gopublik') ? true : false, array('id' => 'kontak_gopublik', 'class' => 'custom-control-input')) }}
                   {{ Form::label('kontak_gopublik', 'Centang Jika sudah Go Publik', ['class' => 'custom-control-label']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('kontak_alamat', '2. Alamat Kantor/Pabrik') }}
-                  {{ Form::textarea('kontak_alamat', null, array('class' => 'form-control', 'rows' => '5')) }}
+                  {{ Form::textarea('kontak_alamat', old('kontak_alamat'), array('class' => 'form-control', 'rows' => '5')) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('kontak_kota', '3. Kota, Provinsi') }}
-                  {{ Form::text('kontak_kota', null, ['class' => 'form-control w-50']) }}
+                  {{ Form::text('kontak_kota', old('kontak_kota'), ['class' => 'form-control w-50']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('kontak_telepon', '4. No. Telepon') }}
@@ -52,7 +52,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">+62</span>
                     </div>
-                    {{ Form::input('tel', 'kontak_telepon', null, ['class' => 'form-control']) }}
+                    {{ Form::input('tel', 'kontak_telepon', old('kontak_telepon'), ['class' => 'form-control']) }}
                   </div>
                 </div>
                 <div class="form-group">
@@ -61,7 +61,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">+62</span>
                     </div>
-                    {{ Form::input('tel', 'kontak_fax', null, ['class' => 'form-control']) }}
+                    {{ Form::input('tel', 'kontak_fax', old('kontak_fax'), ['class' => 'form-control']) }}
                   </div>
                 </div>
                 <div class="form-group">
@@ -70,12 +70,12 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">+62</span>
                     </div>
-                    {{ Form::input('tel', 'kontak_handphone', null, ['class' => 'form-control']) }}
+                    {{ Form::input('tel', 'kontak_handphone', old('kontak_handphone'), ['class' => 'form-control']) }}
                   </div>
                 </div>
                 <div class="form-group">
                   {{ Form::label('kontak_website', '7. Alamat Website') }}
-                  {{ Form::url('kontak_website', null, ['class' => 'form-control w-75']) }}
+                  {{ Form::url('kontak_website', old('kontak_website'), ['class' => 'form-control w-75']) }}
                 </div>
               </div>
             </div>
@@ -86,27 +86,27 @@
               <div class="col-md-8">
                 <div class="form-group">
                   {{ Form::label('status_tahun', '8. Tahun Berdiri') }}
-                  {{ Form::number('status_tahun', null, ['class' => 'form-control w-25', 'min' => '1900', 'max' => '2100']) }}
+                  {{ Form::number('status_tahun', old('status_tahun'), ['class' => 'form-control w-25', 'min' => '1900', 'max' => '2100']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('status_usaha', '9. Status Badan Hukum/Usaha') }}
-                  {{ Form::select('status_usaha', App\Questionnaire::$status_usaha_option, null, ['class' => 'form-control w-75 custom-select custom-select']) }}
+                  {{ Form::select('status_usaha', App\Questionnaire::$status_usaha_option, old('status_usaha'), ['class' => 'form-control w-75 custom-select custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('status_pemodalan', '10. Status Investasi/Pemodalan') }}
-                  {{ Form::select('status_pemodalan', App\Questionnaire::$status_pemodalan_option, null, ['class' => 'form-control w-75 custom-select custom-select']) }}
+                  {{ Form::select('status_pemodalan', App\Questionnaire::$status_pemodalan_option, old('status_pemodalan'), ['class' => 'form-control w-75 custom-select custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('status_pj', '11. Ketua Pengurus/Penanggung Jawab') }}
-                  {{ Form::text('status_pj', null, ['class' => 'form-control w-50']) }}
+                  {{ Form::text('status_pj', old('status_pj'), ['class' => 'form-control w-50']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('status_manajer', '12. Jumlah Perwakilan Manajer') }}
-                  {{ Form::number('status_manajer', null, ['class' => 'form-control w-25', 'min' => 1]) }}
+                  {{ Form::number('status_manajer', old('status_manajer'), ['class' => 'form-control w-25', 'min' => 1]) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('status_karyawan', '13. Jumlah Karyawan') }}
-                  {{ Form::number('status_karyawan', null, ['class' => 'form-control w-25', 'min' => 1]) }}
+                  {{ Form::number('status_karyawan', old('status_karyawan'), ['class' => 'form-control w-25', 'min' => 1]) }}
                 </div>
               </div>
             </div>
@@ -123,42 +123,42 @@
               </div>
               <div class="col-md-8">
                 <div class="form-group">
-                  {{ Form::label('null', '14. Apakah perusahaan anda memiliki Akte Pendirian?') }}
+                  {{ Form::label(null, '14. Apakah perusahaan anda memiliki Akte Pendirian?') }}
                   <div>
                     <div class="form-group custom-control custom-radio d-inline-block mr-3">
-                      {{ Form::radio('dokumen_akte', 1, true, ['id' => 'dokumen_akte_ada', 'class' => 'custom-control-input']) }}
+                      {{ Form::radio('dokumen_akte', 1, old('dokumen_akte') ? true : false, ['id' => 'dokumen_akte_ada', 'class' => 'custom-control-input']) }}
                       {{ Form::label('dokumen_akte_ada', 'Ada', ['class' => 'custom-control-label']) }}
                     </div>
                     <div class="form-group custom-control custom-radio d-inline-block mr-3">
-                      {{ Form::radio('dokumen_akte', 0, null, ['id' => 'dokumen_akte_tidak', 'class' => 'custom-control-input']) }}
+                      {{ Form::radio('dokumen_akte', 0, old('dokumen_akte') ? true : false, ['id' => 'dokumen_akte_tidak', 'class' => 'custom-control-input']) }}
                       {{ Form::label('dokumen_akte_tidak', 'Tidak Ada', ['class' => 'custom-control-label']) }}
                     </div>
                   </div>
                 </div>
                 <div class="form-group">
                   {{ Form::label('dokumen_tahun', '15. Tahun terbit surat') }}
-                  {{ Form::number('dokumen_tahun', null, ['class' => 'form-control w-25', 'min' => '1900', 'max' => '2100']) }}
+                  {{ Form::number('dokumen_tahun', old('dokumen_tahun'), ['class' => 'form-control w-25', 'min' => '1900', 'max' => '2100']) }}
                 </div>
                 <div>
                   {{ Form::label(null, '16. Apakah perusahaan ada / memiliki kelengkapan perijinanan perusahaan?') }}
                   <div class="form-group custom-control custom-checkbox d-inline-block mr-3">
-                    {{ Form::checkbox('dokumen_npwp', 1, null, ['id' => 'dokumen_npwp', 'class' => 'custom-control-input']) }}
+                    {{ Form::checkbox('dokumen_npwp', 1, old('dokumen_npwp') ? true : false, ['id' => 'dokumen_npwp', 'class' => 'custom-control-input']) }}
                     {{ Form::label('dokumen_npwp', 'NPWP', ['class' => 'custom-control-label']) }}
                   </div>
                   <div class="form-group custom-control custom-checkbox d-inline-block mr-3">
-                    {{ Form::checkbox('dokumen_siup', 1, null, ['id' => 'dokumen_siup', 'class' => 'custom-control-input']) }}
+                    {{ Form::checkbox('dokumen_siup', 1, old('dokumen_siup') ? true : false, ['id' => 'dokumen_siup', 'class' => 'custom-control-input']) }}
                     {{ Form::label('dokumen_siup', 'SIUP', ['class' => 'custom-control-label']) }}
                   </div>
                   <div class="form-group custom-control custom-checkbox d-inline-block mr-3">
-                    {{ Form::checkbox('dokumen_tdp', 1, null, ['id' => 'dokumen_tdp', 'class' => 'custom-control-input']) }}
+                    {{ Form::checkbox('dokumen_tdp', 1, old('dokumen_tdp') ? true : false, ['id' => 'dokumen_tdp', 'class' => 'custom-control-input']) }}
                     {{ Form::label('dokumen_tdp', 'TDP', ['class' => 'custom-control-label']) }}
                   </div>
                   <div class="form-group custom-control custom-checkbox d-inline-block mr-3">
-                    {{ Form::checkbox('dokumen_iui', 1, null, ['id' => 'dokumen_iui', 'class' => 'custom-control-input']) }}
+                    {{ Form::checkbox('dokumen_iui', 1, old('dokumen_iui') ? true : false, ['id' => 'dokumen_iui', 'class' => 'custom-control-input']) }}
                     {{ Form::label('dokumen_iui', 'IUI/TDI', ['class' => 'custom-control-label']) }}
                   </div>
                   <div class="form-group custom-control custom-checkbox d-inline-block mr-3">
-                    {{ Form::checkbox('dokumen_situ', 1, null, ['id' => 'dokumen_situ', 'class' => 'custom-control-input']) }}
+                    {{ Form::checkbox('dokumen_situ', 1, old('dokumen_situ') ? true : false, ['id' => 'dokumen_situ', 'class' => 'custom-control-input']) }}
                     {{ Form::label('dokumen_situ', 'SITU', ['class' => 'custom-control-label']) }}
                   </div>
                 </div>
@@ -171,39 +171,39 @@
               <div class="col-md-8">
                 <div class="form-group">
                   {{ Form::label('sm_punya', '17. Apakah perusahaan anda memiliki dan menerapkan Sistem Manajemen?') }}
-                  {{ Form::select('sm_punya', App\Questionnaire::$sm_punya_option, null, ['class' => 'form-control w-75 custom-select']) }}
+                  {{ Form::select('sm_punya', App\Questionnaire::$sm_punya_option, old('sm_punya') ? true : false, ['class' => 'form-control w-75 custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('sm_sertifikasi', '18. Apakah Sistem Manajemen Mutu perusahaan  anda mendapat sertifikasi?') }}
-                  {{ Form::select('sm_sertifikasi', App\Questionnaire::$sm_sertifikasi_option, null, ['class' => 'form-control w-50 custom-select']) }}
+                  {{ Form::select('sm_sertifikasi', App\Questionnaire::$sm_sertifikasi_option, old('sm_sertifikasi'), ['class' => 'form-control w-50 custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('sm_so', '19. Apakah Koperasi/perusahaan anda memiliki struktur organisasi?') }}
-                  {{ Form::select('sm_so', App\Questionnaire::$sm_so_option, null, ['class' => 'form-control w-75 custom-select']) }}
+                  {{ Form::select('sm_so', App\Questionnaire::$sm_so_option, old('sm_so'), ['class' => 'form-control w-75 custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('sm_jobdesc', '20. *Jika Ya, apakah disertai dengan uraian tugas dan fungsi untuk seluruh bagian?') }}
-                  {{ Form::select('sm_jobdesc', App\Questionnaire::$sm_jobdesc_option, null, ['class' => 'form-control w-50 custom-select']) }}
+                  {{ Form::select('sm_jobdesc', App\Questionnaire::$sm_jobdesc_option, old('sm_jobdesc'), ['class' => 'form-control w-50 custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('sm_sop', '21. Apakah Koperasi/perusahaan anda memiliki SOP?') }}
-                  {{ Form::select('sm_sop', App\Questionnaire::$sm_sop_option, null, ['class' => 'form-control w-50 custom-select']) }}
+                  {{ Form::select('sm_sop', App\Questionnaire::$sm_sop_option, old('sm_sop'), ['class' => 'form-control w-50 custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('sm_arsip', '22. Apakah Koperasi/perusahaan anda memiliki sistem pengarsipan?') }}
-                  {{ Form::select('sm_arsip', App\Questionnaire::$sm_arsip_option, null, ['class' => 'form-control w-50 custom-select']) }}
+                  {{ Form::select('sm_arsip', App\Questionnaire::$sm_arsip_option, old('sm_arsip'), ['class' => 'form-control w-50 custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('sm_audit', '23. Apakah Koperasi/perusahaan anda melakukan internal audit secara berkala?') }}
-                  {{ Form::select('sm_audit', App\Questionnaire::$sm_audit_option, null, ['class' => 'form-control w-50 custom-select']) }}
+                  {{ Form::select('sm_audit', App\Questionnaire::$sm_audit_option, old('sm_audit'), ['class' => 'form-control w-50 custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('sm_tqc', '24. Apakah perusahaan melakukan total quality control dari bahan baku sampai ke produk?') }}
-                  {{ Form::select('sm_tqc', App\Questionnaire::$sm_tqc_option, null, ['class' => 'form-control w-75 custom-select']) }}
+                  {{ Form::select('sm_tqc', App\Questionnaire::$sm_tqc_option, old('sm_tqc'), ['class' => 'form-control w-75 custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('sm_satisfaction', '25. Apakah perusahaan anda memperhatikan kepuasan pelanggan?') }}
-                  {{ Form::select('sm_satisfaction', App\Questionnaire::$sm_satisfaction_option, null, ['class' => 'form-control custom-select']) }}
+                  {{ Form::select('sm_satisfaction', App\Questionnaire::$sm_satisfaction_option, old('sm_satisfaction'), ['class' => 'form-control custom-select']) }}
                 </div>
               </div>
             </div>
@@ -214,43 +214,43 @@
               <div class="col-md-8">
                 <div class="form-group">
                   {{ Form::label('sarana_luas_kantor', '26. Berapakah luas bangunan tempat kerja dan kantor?') }}
-                  {{ Form::select('sarana_luas_kantor', App\Questionnaire::$sarana_luas_kantor_option, null, ['class' => 'form-control w-50 custom-select']) }}
+                  {{ Form::select('sarana_luas_kantor', App\Questionnaire::$sarana_luas_kantor_option, old('sarana_luas_kantor'), ['class' => 'form-control w-50 custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('sarana_kondisi_kantor', '27. Bagaimana kondisi bangunan tempat kerja dan kantor?') }}
-                  {{ Form::select('sarana_kondisi_kantor', App\Questionnaire::$sarana_kondisi_kantor_option, null, ['class' => 'form-control w-50 custom-select']) }}
+                  {{ Form::select('sarana_kondisi_kantor', App\Questionnaire::$sarana_kondisi_kantor_option, old('sarana_kondisi_kantor'), ['class' => 'form-control w-50 custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('sarana_nilai_kantor', '28. Berapa perkiraan nilai bangunan tempat kerja dan kantor?') }}
-                  {{ Form::select('sarana_nilai_kantor', App\Questionnaire::$sarana_nilai_kantor_option, null, ['class' => 'form-control w-50 custom-select']) }}
+                  {{ Form::select('sarana_nilai_kantor', App\Questionnaire::$sarana_nilai_kantor_option, old('sarana_nilai_kantor'), ['class' => 'form-control w-50 custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('sarana_luas_gudang', '29. Berapa luas bangunan gudang? ') }}
-                  {{ Form::select('sarana_luas_gudang', App\Questionnaire::$sarana_luas_gudang_option, null, ['class' => 'form-control w-50 custom-select']) }}
+                  {{ Form::select('sarana_luas_gudang', App\Questionnaire::$sarana_luas_gudang_option, old('sarana_luas_gudang'), ['class' => 'form-control w-50 custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('sarana_kondisi_gudang', '30. Bagaimana kondisi bangunan gudang?') }}
-                  {{ Form::select('sarana_kondisi_gudang', App\Questionnaire::$sarana_kondisi_gudang_option, null, ['class' => 'form-control w-50 custom-select']) }}
+                  {{ Form::select('sarana_kondisi_gudang', App\Questionnaire::$sarana_kondisi_gudang_option, old('sarana_kondisi_gudang'), ['class' => 'form-control w-50 custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('sarana_nilai_gudang', '31. Berapa perkiraan nilai bangunan gudang?') }}
-                  {{ Form::select('sarana_nilai_gudang', App\Questionnaire::$sarana_nilai_gudang_option, null, ['class' => 'form-control w-50 custom-select']) }}
+                  {{ Form::select('sarana_nilai_gudang', App\Questionnaire::$sarana_nilai_gudang_option, old('sarana_nilai_gudang'), ['class' => 'form-control w-50 custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('sarana_jumlah_mobil', '32. Berapa jumlah mobil pribadi/perusahaan yang dimiliki oleh Koperasi/perusahaan?') }}
-                  {{ Form::select('sarana_jumlah_mobil', App\Questionnaire::$sarana_jumlah_mobil_option, null, ['class' => 'form-control w-25 custom-select']) }}
+                  {{ Form::select('sarana_jumlah_mobil', App\Questionnaire::$sarana_jumlah_mobil_option, old('sarana_jumlah_mobil'), ['class' => 'form-control w-25 custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('sarana_nilai_mobil', '33. Berapa nilai perolehan/pasar mobil pribadi/perusahaan dan yang dimiliki oleh Koperasi/perusahaan?') }}
-                  {{ Form::select('sarana_nilai_mobil', App\Questionnaire::$sarana_nilai_mobil_option, null, ['class' => 'form-control w-50 custom-select']) }}
+                  {{ Form::select('sarana_nilai_mobil', App\Questionnaire::$sarana_nilai_mobil_option, old('sarana_nilai_mobil'), ['class' => 'form-control w-50 custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('sarana_jumlah_angkutan', '34. Berapa jumlah mobil angkutan yang dimiliki oleh perusahaan anda?') }}
-                  {{ Form::select('sarana_jumlah_angkutan', App\Questionnaire::$sarana_jumlah_angkutan_option, null, ['class' => 'form-control w-25 custom-select']) }}
+                  {{ Form::select('sarana_jumlah_angkutan', App\Questionnaire::$sarana_jumlah_angkutan_option, old('sarana_jumlah_angkutan'), ['class' => 'form-control w-25 custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('sarana_nilai_angkutan', '35. Berapa nilai perolehan/pasar mobil angkutan yang dimiliki oleh perusahaan anda?') }}
-                  {{ Form::select('sarana_nilai_angkutan', App\Questionnaire::$sarana_nilai_angkutan_option, null, ['class' => 'form-control w-50 custom-select']) }}
+                  {{ Form::select('sarana_nilai_angkutan', App\Questionnaire::$sarana_nilai_angkutan_option, old('sarana_nilai_angkutan'), ['class' => 'form-control w-50 custom-select']) }}
                 </div>
               </div>
             </div>
@@ -261,7 +261,7 @@
               <div class="col-md-8">
                 <div class="form-group">
                   {{ Form::label('potensi_perluasan', '36. Apakah perusahaan mempunyai rencana perluasan terhadap kegiatan produksi, gedung dan sarana serta fasilitas produksi?') }}
-                  {{ Form::select('potensi_perluasan', App\Questionnaire::$potensi_perluasan_option, null, ['class' => 'form-control custom-select']) }}
+                  {{ Form::select('potensi_perluasan', App\Questionnaire::$potensi_perluasan_option, old('potensi_perluasan'), ['class' => 'form-control custom-select']) }}
                 </div>
               </div>
             </div>
@@ -279,31 +279,31 @@
               <div class="col-md-8">
                 <div class="form-group">
                   {{ Form::label('efisiensi_standar', '37. Apakan jenis-jenis mesin yang digunakan oleh perusahaan anda sudah memenuhi standar minimal dari produk yang akan dibuat?') }}
-                  {{ Form::select('efisiensi_standar', App\Questionnaire::$efisiensi_standar_option, null, ['class' => 'form-control w-50 custom-select']) }}
+                  {{ Form::select('efisiensi_standar', App\Questionnaire::$efisiensi_standar_option, old('efisiensi_standar'), ['class' => 'form-control w-50 custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('efisiensi_jumlah', '38. Apakah jumlah mesin yang ada sudah mencukupi  dengan volume produk yang akan dihasilkan?') }}
-                  {{ Form::select('efisiensi_jumlah', App\Questionnaire::$efisiensi_jumlah_option, null, ['class' => 'form-control w-50 custom-select']) }}
+                  {{ Form::select('efisiensi_jumlah', App\Questionnaire::$efisiensi_jumlah_option, old('efisiensi_jumlah'), ['class' => 'form-control w-50 custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('efisiensi_kapasitas', '39. Apakah setiap mesin di Koperasi/perusahaan anda sudah bekerja secara maksimal (sesuai jam kerja)?') }}
-                  {{ Form::select('efisiensi_kapasitas', App\Questionnaire::$efisiensi_kapasitas_option, null, ['class' => 'form-control w-25 custom-select']) }}
+                  {{ Form::select('efisiensi_kapasitas', App\Questionnaire::$efisiensi_kapasitas_option, old('efisiensi_kapasitas'), ['class' => 'form-control w-25 custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('efisiensi_umur', '40. Berapa usia mayoritasmesin yang digunakan di Koperasi/perusahaan anda?') }}
-                  {{ Form::select('efisiensi_umur', App\Questionnaire::$efisiensi_umur_option, null, ['class' => 'form-control w-25 custom-select']) }}
+                  {{ Form::select('efisiensi_umur', App\Questionnaire::$efisiensi_umur_option, old('efisiensi_umur'), ['class' => 'form-control w-25 custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('efisiensi_perawatan', '41. Apakah dilakukan perawatan mesin-mesin produksi di Koperasi/perusahaan anda?') }}
-                  {{ Form::select('efisiensi_perawatan', App\Questionnaire::$efisiensi_perawatan_option, null, ['class' => 'form-control w-50 custom-select']) }}
+                  {{ Form::select('efisiensi_perawatan', App\Questionnaire::$efisiensi_perawatan_option, old('efisiensi_perawatan'), ['class' => 'form-control w-50 custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('efisiensi_rendemen', '42. Berapa nilai efisiensi produksi (rendemen) dari usaha yang dilakukan?') }}
-                  {{ Form::select('efisiensi_rendemen', App\Questionnaire::$efisiensi_rendemen_option, null, ['class' => 'form-control w-25 custom-select']) }}
+                  {{ Form::select('efisiensi_rendemen', App\Questionnaire::$efisiensi_rendemen_option, old('efisiensi_rendemen'), ['class' => 'form-control w-25 custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('efisiensi_variasi', '43. Berapa jenis produk yang dihasilkan oleh Koperasi/perusahaan?') }}
-                  {{ Form::select('efisiensi_variasi', App\Questionnaire::$efisiensi_variasi_option, null, ['class' => 'form-control w-25 custom-select']) }}
+                  {{ Form::select('efisiensi_variasi', App\Questionnaire::$efisiensi_variasi_option, old('efisiensi_variasi'), ['class' => 'form-control w-25 custom-select']) }}
                 </div>
               </div>
             </div>
@@ -314,11 +314,11 @@
               <div class="col-md-8">
                 <div class="form-group">
                   {{ Form::label('energi_pln', '44. Berapa kapasitas listrik yang dipakai di Koperasi/perusahaan anda?') }}
-                  {{ Form::select('energi_pln', App\Questionnaire::$energi_pln_option, null, ['class' => 'form-control w-50 custom-select']) }}
+                  {{ Form::select('energi_pln', App\Questionnaire::$energi_pln_option, old('energi_pln'), ['class' => 'form-control w-50 custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('energi_genset', '45. Berapa kapasitas listrik yang dipakai di Koperasi/perusahaan anda?') }}
-                  {{ Form::select('energi_genset', App\Questionnaire::$energi_genset_option, null, ['class' => 'form-control w-50 custom-select']) }}
+                  {{ Form::select('energi_genset', App\Questionnaire::$energi_genset_option, old('energi_genset'), ['class' => 'form-control w-50 custom-select']) }}
                 </div>  
               </div>
             </div>
@@ -329,7 +329,7 @@
               <div class="col-md-8">
                 <div class="form-group">
                   {{ Form::label('alternatif_energi', '46. Selain penggunaan listrik PLN dan genset, apakah koperasi/perusahaan anda menggunakan energi alternative dalam proses produksi?') }}
-                  {{ Form::select('alternatif_energi', App\Questionnaire::$alternatif_energi_option, null, ['class' => 'form-control w-50 custom-select']) }}
+                  {{ Form::select('alternatif_energi', App\Questionnaire::$alternatif_energi_option, old('alternatif_energi'), ['class' => 'form-control w-50 custom-select']) }}
                 </div>
               </div>
             </div>
@@ -340,7 +340,7 @@
               <div class="col-md-8">
                 <div class="form-group">
                   {{ Form::label('inovasi_produk', '47. Adakah inovasi baru yang dilakukan oleh Koperasi/perusahaan anda dalam meningkatkan nilai jual dan kualitas produk?') }}
-                  {{ Form::select('inovasi_produk', App\Questionnaire::$inovasi_produk_option, null, ['class' => 'form-control w-75 custom-select']) }}
+                  {{ Form::select('inovasi_produk', App\Questionnaire::$inovasi_produk_option, old('inovasi_produk'), ['class' => 'form-control w-75 custom-select']) }}
                 </div>
               </div>
             </div>
@@ -363,7 +363,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">Rp</span>
                     </div>
-                    {{ Form::text('rasio_kas', null, ['class' => 'form-control']) }}
+                    {{ Form::text('rasio_kas', old('rasio_kas'), ['class' => 'form-control']) }}
                   </div>
                   <small class="form-text text-muted">Mempengaruhi nilai Rasio Likuiditas dan Rasio Solvabilitas</small>
                 </div>
@@ -373,7 +373,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">Rp</span>
                     </div>
-                    {{ Form::text('rasio_piutang', null, ['class' => 'form-control']) }}
+                    {{ Form::text('rasio_piutang', old('rasio_piutang'), ['class' => 'form-control']) }}
                   </div>
                   <small class="form-text text-muted">Mempengaruhi nilai Rasio Likuiditas dan Rasio Solvabilitas</small>
                 </div>
@@ -383,7 +383,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">Rp</span>
                     </div>
-                    {{ Form::text('rasio_persediaan', null, ['class' => 'form-control']) }}
+                    {{ Form::text('rasio_persediaan', old('rasio_persediaan'), ['class' => 'form-control']) }}
                   </div>
                   <small class="form-text text-muted">Mempengaruhi nilai Rasio Likuiditas dan Rasio Solvabilitas</small>
                 </div>
@@ -393,7 +393,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">Rp</span>
                     </div>
-                    {{ Form::text('rasio_hutang_lancar', null, ['class' => 'form-control']) }}
+                    {{ Form::text('rasio_hutang_lancar', old('rasio_hutang_lancar'), ['class' => 'form-control']) }}
                   </div>
                   <small class="form-text text-muted">Mempengaruhi nilai Rasio Likuiditas dan Rasio Solvabilitas</small>
                 </div>
@@ -403,7 +403,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">Rp</span>
                     </div>
-                    {{ Form::text('rasio_hutang_pendek', null, ['class' => 'form-control']) }}
+                    {{ Form::text('rasio_hutang_pendek', old('rasio_hutang_pendek'), ['class' => 'form-control']) }}
                   </div>
                   <small class="form-text text-muted">Mempengaruhi nilai Rasio Likuiditas dan Rasio Solvabilitas</small>
                 </div>
@@ -414,7 +414,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">Rp</span>
                     </div>
-                    {{ Form::text('rasio_tanah', null, ['class' => 'form-control']) }}
+                    {{ Form::text('rasio_tanah', old('rasio_tanah'), ['class' => 'form-control']) }}
                   </div>
                   <small class="form-text text-muted">Mempengaruhi nilai Rasio Solvabilitas</small>
                 </div>
@@ -424,7 +424,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">Rp</span>
                     </div>
-                    {{ Form::text('rasio_bangunan', null, ['class' => 'form-control']) }}
+                    {{ Form::text('rasio_bangunan', old('rasio_bangunan'), ['class' => 'form-control']) }}
                   </div>
                   <small class="form-text text-muted">Mempengaruhi nilai Rasio Solvabilitas</small>
                 </div>
@@ -434,7 +434,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">Rp</span>
                     </div>
-                    {{ Form::text('rasio_mesin', null, ['class' => 'form-control']) }}
+                    {{ Form::text('rasio_mesin', old('rasio_mesin'), ['class' => 'form-control']) }}
                   </div>
                   <small class="form-text text-muted">Mempengaruhi nilai Rasio Solvabilitas</small>
                 </div>
@@ -444,7 +444,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">Rp</span>
                     </div>
-                    {{ Form::text('rasio_kendaraan', null, ['class' => 'form-control']) }}
+                    {{ Form::text('rasio_kendaraan', old('rasio_kendaraan'), ['class' => 'form-control']) }}
                   </div>
                   <small class="form-text text-muted">Mempengaruhi nilai Rasio Solvabilitas</small>
                 </div>
@@ -454,7 +454,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">Rp</span>
                     </div>
-                    {{ Form::text('rasio_inventaris', null, ['class' => 'form-control']) }}
+                    {{ Form::text('rasio_inventaris', old('rasio_inventaris'), ['class' => 'form-control']) }}
                   </div>
                   <small class="form-text text-muted">Mempengaruhi nilai Rasio Solvabilitas</small>
                 </div>
@@ -464,7 +464,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">Rp</span>
                     </div>
-                    {{ Form::text('rasio_hutang_panjang', null, ['class' => 'form-control']) }}
+                    {{ Form::text('rasio_hutang_panjang', old('rasio_hutang_panjang'), ['class' => 'form-control']) }}
                   </div>
                   <small class="form-text text-muted">Mempengaruhi nilai Rasio Solvabilitas</small>
                 </div>
@@ -475,7 +475,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">Rp</span>
                     </div>
-                    {{ Form::text('rasio_total_penjualan', null, ['class' => 'form-control']) }}
+                    {{ Form::text('rasio_total_penjualan', old('rasio_total_penjualan'), ['class' => 'form-control']) }}
                   </div>
                   <small class="form-text text-muted">Mempengaruhi nilai Laba Usaha dan Rasio Profitabilitas</small>
                 </div>
@@ -485,7 +485,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">Rp</span>
                     </div>
-                    {{ Form::text('rasio_total_pengeluaran', null, ['class' => 'form-control']) }}
+                    {{ Form::text('rasio_total_pengeluaran', old('rasio_total_pengeluaran'), ['class' => 'form-control']) }}
                   </div>
                   <small class="form-text text-muted">Mempengaruhi nilai Laba Usaha dan Rasio Profitabilitas</small>
                 </div>
@@ -496,7 +496,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">Rp</span>
                     </div>
-                    {{ Form::text('modal_awal', null, ['class' => 'form-control']) }}
+                    {{ Form::text('modal_awal', old('modal_awal'), ['class' => 'form-control']) }}
                   </div>
                   <small class="form-text text-muted">Mempengaruhi nilai Perimbangan Modal</small>
                 </div>
@@ -506,7 +506,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">Rp</span>
                     </div>
-                    {{ Form::text('modal_sendiri', null, ['class' => 'form-control']) }}
+                    {{ Form::text('modal_sendiri', old('modal_sendiri'), ['class' => 'form-control']) }}
                   </div>
                   <small class="form-text text-muted">Mempengaruhi nilai Perimbangan Modal dan Rasio Profitabilitas</small>
                 </div>
@@ -516,7 +516,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">Rp</span>
                     </div>
-                    {{ Form::text('modal_luar', null, ['class' => 'form-control']) }}
+                    {{ Form::text('modal_luar', old('modal_luar'), ['class' => 'form-control']) }}
                   </div>
                   <small class="form-text text-muted">Mempengaruhi nilai Perimbangan Modal dan Rasio Profitabilitas</small>
                 </div>
@@ -529,19 +529,19 @@
               <div class="col-md-8">
                 <div class="form-group">
                   {{ Form::label('hubungan_pinjaman', '64. Bagaimanakah selama ini hubungan usaha anda dengan perbankan?') }}
-                  {{ Form::select('hubungan_pinjaman', App\Questionnaire::$hubungan_pinjaman_option, null, ['class' => 'form-control custom-select']) }}
+                  {{ Form::select('hubungan_pinjaman', App\Questionnaire::$hubungan_pinjaman_option, old('hubungan_pinjaman'), ['class' => 'form-control custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('hubungan_frekuensi', '65. Seberapa banyak/kali anda berhubungan untuk mengajukan pinjaman ke perbankan selama 3 tahun terakhir?') }}
-                  {{ Form::select('hubungan_frekuensi', App\Questionnaire::$hubungan_frekuensi_option, null, ['class' => 'form-control w-50 custom-select']) }}
+                  {{ Form::select('hubungan_frekuensi', App\Questionnaire::$hubungan_frekuensi_option, old('hubungan_frekuensi'), ['class' => 'form-control w-50 custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('hubungan_internal', '66. Kendala internal apakah yang dihadapi perusahaan dalam berhubungan dengan peminjaman/kredit dari perbankan?') }}
-                  {{ Form::select('hubungan_internal', App\Questionnaire::$hubungan_internal_option, null, ['class' => 'form-control custom-select']) }}
+                  {{ Form::select('hubungan_internal', App\Questionnaire::$hubungan_internal_option, old('hubungan_internal'), ['class' => 'form-control custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('hubungan_eksternal', '67. Kendala eksternal apakah yang dihadapi perusahaan jika berhadapan dengan lembaga keuangan (bank dan non bank)?') }}
-                  {{ Form::select('hubungan_eksternal', App\Questionnaire::$hubungan_eksternal_option, null, ['class' => 'form-control w-50 custom-select']) }}
+                  {{ Form::select('hubungan_eksternal', App\Questionnaire::$hubungan_eksternal_option, old('hubungan_eksternal'), ['class' => 'form-control w-50 custom-select']) }}
                 </div>
               </div>
             </div>
@@ -559,11 +559,11 @@
               <div class="col-md-8">
                 <div class="form-group">
                   {{ Form::label('tk_jumlah', '68. Berapakah jumlah tenaga kerja di Koperasi/perusahaan anda pada saat ini?') }}
-                  {{ Form::select('tk_jumlah', App\Questionnaire::$tk_jumlah_option, null, ['class' => 'form-control w-50 custom-select']) }}
+                  {{ Form::select('tk_jumlah', App\Questionnaire::$tk_jumlah_option, old('tk_jumlah'), ['class' => 'form-control w-50 custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('tk_kompetisi', '69. Bagaimanakah kompetensi tenaga kerja di koperasi/perusahaan anda saat ini?') }}
-                  {{ Form::select('tk_kompetisi', App\Questionnaire::$tk_kompetisi_option, null, ['class' => 'form-control w-75 custom-select']) }}
+                  {{ Form::select('tk_kompetisi', App\Questionnaire::$tk_kompetisi_option, old('tk_kompetisi'), ['class' => 'form-control w-75 custom-select']) }}
                 </div>
               </div>
             </div>
@@ -574,15 +574,15 @@
               <div class="col-md-8">
                 <div class="form-group">
                   {{ Form::label('produktif_jam', '70. Berapa lama jam kerja tenaga kerja di perusaahan anda saat ini?') }}
-                  {{ Form::select('produktif_jam', App\Questionnaire::$produktif_jam_option, null, ['class' => 'form-control w-25 custom-select']) }}
+                  {{ Form::select('produktif_jam', App\Questionnaire::$produktif_jam_option, old('produktif_jam'), ['class' => 'form-control w-25 custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('produktif_shift', '71. Bagaimanakah shift (giliran kerja) diperusahaan anda saat ini?') }}
-                  {{ Form::select('produktif_shift', App\Questionnaire::$produktif_shift_option, null, ['class' => 'form-control w-25 custom-select']) }}
+                  {{ Form::select('produktif_shift', App\Questionnaire::$produktif_shift_option, old('produktif_shift'), ['class' => 'form-control w-25 custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('produktif_upah', '72. Berapa standar upah tenaga kerja?') }}
-                  {{ Form::select('produktif_upah', App\Questionnaire::$produktif_upah_option, null, ['class' => 'form-control w-50 custom-select']) }}
+                  {{ Form::select('produktif_upah', App\Questionnaire::$produktif_upah_option, old('produktif_upah'), ['class' => 'form-control w-50 custom-select']) }}
                 </div>
               </div>
             </div>
@@ -593,7 +593,7 @@
               <div class="col-md-8">
                 <div class="form-group">
                   {{ Form::label('fasilitas_tk', '73. Bagaimanakah fasilitas yang diberikan koperasi/perusahaan kepada pegawai?') }}
-                  {{ Form::select('fasilitas_tk', App\Questionnaire::$fasilitas_tk_option, null, ['class' => 'form-control w-75 custom-select']) }}
+                  {{ Form::select('fasilitas_tk', App\Questionnaire::$fasilitas_tk_option, old('fasilitas_tk'), ['class' => 'form-control w-75 custom-select']) }}
                 </div>
               </div>
             </div>
@@ -611,7 +611,7 @@
               <div class="col-md-8">
                 <div class="form-group">
                   {{ Form::label('marketing_strategy', '74. Strategi apakah yang diterapkan /diberlakukan Koperasi/perusahaan saat ini?') }}
-                  {{ Form::select('marketing_strategy', App\Questionnaire::$marketing_strategy_option, null, ['class' => 'form-control custom-select']) }}
+                  {{ Form::select('marketing_strategy', App\Questionnaire::$marketing_strategy_option, old('marketing_strategy'), ['class' => 'form-control custom-select']) }}
                 </div>
               </div>
             </div>
@@ -622,19 +622,19 @@
               <div class="col-md-8">
                 <div class="form-group">
                   {{ Form::label('mix_product', '75. Berapa macam/jenis dan tipe produk yang dibuat dan dipasarkan di Koperasi/perusahaan anda?') }}
-                  {{ Form::select('mix_product', App\Questionnaire::$mix_product_option, null, ['class' => 'form-control w-50 custom-select']) }}
+                  {{ Form::select('mix_product', App\Questionnaire::$mix_product_option, old('mix_product'), ['class' => 'form-control w-50 custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('mix_price', '76. Bagaimanakah penerapan harga di Koperasi/perusahaan anda?') }}
-                  {{ Form::select('mix_price', App\Questionnaire::$mix_price_option, null, ['class' => 'form-control w-50 custom-select']) }}
+                  {{ Form::select('mix_price', App\Questionnaire::$mix_price_option, old('mix_price'), ['class' => 'form-control w-50 custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('mix_place', '77. Bagaimanakah saluran distribusi produk Koperasi/perusahaan anda?') }}
-                  {{ Form::select('mix_place', App\Questionnaire::$mix_place_option, null, ['class' => 'form-control custom-select']) }}
+                  {{ Form::select('mix_place', App\Questionnaire::$mix_place_option, old('mix_place'), ['class' => 'form-control custom-select']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('mix_promotion', '78. Bagaimanakah keadaan profitabilitas usaha Koperasi/perusahaan anda?') }}
-                  {{ Form::select('mix_promotion', App\Questionnaire::$mix_promotion_option, null, ['class' => 'form-control w-50 custom-select']) }}
+                  {{ Form::select('mix_promotion', App\Questionnaire::$mix_promotion_option, old('mix_promotion'), ['class' => 'form-control w-50 custom-select']) }}
                 </div>
               </div>
             </div>
@@ -645,7 +645,7 @@
               <div class="col-md-8">
                 <div class="form-group">
                   {{ Form::label('market_share', '79. Bagaimanakah keadaan market share perusahaan anda saat ini?') }}
-                  {{ Form::select('market_share', App\Questionnaire::$market_share_option, null, ['class' => 'form-control w-25 custom-select']) }}
+                  {{ Form::select('market_share', App\Questionnaire::$market_share_option, old('market_share'), ['class' => 'form-control w-25 custom-select']) }}
                 </div>
               </div>
             </div>
@@ -656,7 +656,7 @@
               <div class="col-md-8">
                 <div class="form-group">
                   {{ Form::label('market_coverage', '80. Bagaimanakah cakupan pasar Koperasi/perusahaan anda saat ini?') }}
-                  {{ Form::select('market_coverage', App\Questionnaire::$market_coverage_option, null, ['class' => 'form-control w-75 custom-select']) }}
+                  {{ Form::select('market_coverage', App\Questionnaire::$market_coverage_option, old('market_coverage'), ['class' => 'form-control w-75 custom-select']) }}
                 </div>
               </div>
             </div>
@@ -667,7 +667,7 @@
               <div class="col-md-8">
                 <div class="form-group">
                   {{ Form::label('market_competition', '81. Bagaimanakah keadaan persaingan produk yang dihasilkan Koperasi/perusahaan anda saat ini?') }}
-                  {{ Form::select('market_competition', App\Questionnaire::$market_competition_option, null, ['class' => 'form-control w-75 custom-select']) }}
+                  {{ Form::select('market_competition', App\Questionnaire::$market_competition_option, old('market_competition'), ['class' => 'form-control w-75 custom-select']) }}
                 </div>
               </div>
             </div>
