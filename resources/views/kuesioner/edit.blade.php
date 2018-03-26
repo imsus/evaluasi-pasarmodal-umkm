@@ -5,7 +5,7 @@
 	<div class="row flex align-items-center mb-4">
 		<div class="col-md-8"><h1 class="mb-0">Edit Kuesioner <strong>#{{ $questionnaire->id }}</strong></h1></div>
     <div class="col-md-4 hidden-print text-right">
-      {{ Form::open(['url' => action('QuestionnaireController@delete', $questionnaire->id), 'method' => 'delete', 'onsubmit' => 'ask(' . $questionnaire->id . ')']) }}
+      {{ Form::open(['id' => 'form', 'url' => action('QuestionnaireController@delete', $questionnaire->id), 'method' => 'delete', 'onsubmit' => 'event.preventDefault(); ask(' . $questionnaire->id . ')']) }}
         <div class="btn-group btn-group-justified">
           <a href="{{ route('questionnaire.show', $questionnaire->id) }}" class="btn btn-light flex align-items-center justify-content-center">
             <span class="fal fa-check"></span>
@@ -706,8 +706,7 @@
 @push('js')
   <script>
     function ask(id) {
-      event.preventDefault();
-      if (confirm(`Apakah kamu yakin akan menghapus kuesioner dengan id ${id} ?`) === true) {
+      if (confirm(`Apakah kamu yakin akan menghapus kuesioner dengan id ${id} ?`)) {
         document.getElementById('form').submit();
       }
     }

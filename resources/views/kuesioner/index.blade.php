@@ -42,7 +42,7 @@
               <td>{{ $questionnaire->created_at->format('d M Y') }}</td>
               <td>{{ $questionnaire->updated_at->diffForHumans() }}</td>
               <td class="text-right">
-                {{ Form::open(['id' => 'form-' . $questionnaire->id, 'url' => action('QuestionnaireController@delete', $questionnaire->id), 'method' => 'delete', 'onsubmit' => 'ask(' . $questionnaire->id . ')']) }}
+                {{ Form::open(['id' => 'form-' . $questionnaire->id, 'url' => action('QuestionnaireController@delete', $questionnaire->id), 'method' => 'delete', 'onsubmit' => 'event.preventDefault(); ask(' . $questionnaire->id . ')']) }}
                   <div class="btn-group btn-group-sm option">
                     <a href="{{ route('questionnaire.show', $questionnaire->id) }}" class="btn btn-light text-success d-flex align-items-center justify-content-center">
                       <span class="fal fa-check"></span>
@@ -86,8 +86,7 @@
 @push('js')
   <script>
     function ask(id) {
-      event.preventDefault();
-      if (confirm(`Apakah kamu yakin akan menghapus kuesioner dengan id ${id} ?`) === true) {
+      if (confirm(`Apakah kamu yakin akan menghapus kuesioner dengan id ${id}?`)) {
         document.getElementById(`form-${id}`).submit();
       }
     }
