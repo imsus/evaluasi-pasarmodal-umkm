@@ -58,11 +58,9 @@ class QuestionnaireController extends Controller
             'kontak_nama.required' => 'Nama perusahaan wajib diisi.'
         ])->validate();
 
-        $questionnaire = new Questionnaire;
-        $questionnaire->fill($request->all());
-        $questionnaire->user_id = auth()->user()->id;
-
-        $questionnaire->save();
+        $questionnaire = Questionnaire::create(array_merge($request->all(), [
+            'user_id' => auth()->user()->id
+        ]));
 
         // dd($questionnaire);
 
@@ -96,8 +94,7 @@ class QuestionnaireController extends Controller
         ])->validate();
 
         $questionnaire = Questionnaire::findOrFail($id);
-        $questionnaire->fill($request->all());
-        $questionnaire->user = auth()->user()->username;
+        $questionnaire->update($request->all());
 
         // dd($questionnaire);
 

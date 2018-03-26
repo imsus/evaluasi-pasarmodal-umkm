@@ -489,6 +489,9 @@ class Questionnaire extends Model
     }
 
     protected $fillable = [
+        // User
+        'user_id',
+
         // Kontak Perusahaan
         'kontak_nama', 'kontak_gopublik', 'kontak_alamat', 'kontak_kota',
         'kontak_telepon', 'kontak_fax', 'kontak_handphone', 'kontak_website',
