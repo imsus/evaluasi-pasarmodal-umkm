@@ -202,7 +202,7 @@
                     <dt>TDP</dt><dd>@if ($questionnaire->dokumen_tdp) Ada @else Tidak Ada @endif</dd>
                     <dt>IUI</dt><dd>@if ($questionnaire->dokumen_iui) Ada @else Tidak Ada @endif</dd>
                     <dt>SITU</dt><dd>@if ($questionnaire->dokumen_situ) Ada @else Tidak Ada @endif</dd>
-                    <dt>Skor</dt><dd><span class="badge {{ labelClass(array_sum(array($questionnaire->dokumen_npwp, $questionnaire->dokumen_siup, $questionnaire->dokumen_tdp, $questionnaire->dokumen_iui, $questionnaire->dokumen_situ))) }}">{{ array_sum([$questionnaire->dokumen_npwp, $questionnaire->dokumen_siup, $questionnaire->dokumen_tdp, $questionnaire->dokumen_iui, $questionnaire->dokumen_situ]) }}</span></dd>
+                    <dt>Skor</dt><dd><span class="badge {{ labelClass(array_sum([$questionnaire->dokumen_npwp, $questionnaire->dokumen_siup, $questionnaire->dokumen_tdp, $questionnaire->dokumen_iui, $questionnaire->dokumen_situ])) }}">{{ array_sum([$questionnaire->dokumen_npwp, $questionnaire->dokumen_siup, $questionnaire->dokumen_tdp, $questionnaire->dokumen_iui, $questionnaire->dokumen_situ]) }}</span></dd>
                   </dl>
                 </div>
               </div>

@@ -35,12 +35,12 @@
                   <div class="invalid-feedback">{{ $errors->first('kontak_nama') }}</div>
                 </div>
                 <div class="form-group custom-control custom-checkbox">
-                  {{ Form::checkbox('kontak_gopublik', 'kontak_gopublik', old('kontak_gopublik') ? true : false, array('id' => 'kontak_gopublik', 'class' => 'custom-control-input')) }}
+                  {{ Form::checkbox('kontak_gopublik', 1, old('kontak_gopublik'), ['id' => 'kontak_gopublik', 'class' => 'custom-control-input']) }}
                   {{ Form::label('kontak_gopublik', 'Centang Jika sudah Go Publik', ['class' => 'custom-control-label']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('kontak_alamat', '2. Alamat Kantor/Pabrik') }}
-                  {{ Form::textarea('kontak_alamat', old('kontak_alamat'), array('class' => 'form-control', 'rows' => '5')) }}
+                  {{ Form::textarea('kontak_alamat', old('kontak_alamat'), ['class' => 'form-control', 'rows' => '5']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('kontak_kota', '3. Kota, Provinsi') }}
@@ -126,11 +126,11 @@
                   {{ Form::label(null, '14. Apakah perusahaan anda memiliki Akte Pendirian?') }}
                   <div>
                     <div class="form-group custom-control custom-radio d-inline-block mr-3">
-                      {{ Form::radio('dokumen_akte', 1, old('dokumen_akte') ? true : false, ['id' => 'dokumen_akte_ada', 'class' => 'custom-control-input']) }}
+                      {{ Form::radio('dokumen_akte', 1, old('dokumen_akte', true) ? true : false, ['id' => 'dokumen_akte_ada', 'class' => 'custom-control-input']) }}
                       {{ Form::label('dokumen_akte_ada', 'Ada', ['class' => 'custom-control-label']) }}
                     </div>
                     <div class="form-group custom-control custom-radio d-inline-block mr-3">
-                      {{ Form::radio('dokumen_akte', 0, old('dokumen_akte') ? true : false, ['id' => 'dokumen_akte_tidak', 'class' => 'custom-control-input']) }}
+                      {{ Form::radio('dokumen_akte', 0, old('dokumen_akte', false) ? true : false, ['id' => 'dokumen_akte_tidak', 'class' => 'custom-control-input']) }}
                       {{ Form::label('dokumen_akte_tidak', 'Tidak Ada', ['class' => 'custom-control-label']) }}
                     </div>
                   </div>

@@ -129,7 +129,5 @@ class QuestionnaireController extends Controller
         $questionnaire = Questionnaire::find($id);
         $pdf = PDF::loadView('kuesioner.print', compact(['questionnaire']));
         return $pdf->stream();
-        // return $pdf->download('kuesioner-' . $id . '.pdf');
-        // $pdf = PDF::loadView('pdf.single', array('kuesioner' => $questionnaire));
     }
 }

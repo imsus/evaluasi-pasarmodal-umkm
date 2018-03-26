@@ -43,12 +43,12 @@
                   <div class="invalid-feedback">{{ $errors->first('kontak_nama') }}</div>
                 </div>
                 <div class="form-group custom-control custom-checkbox">
-                  {{ Form::checkbox('kontak_gopublik', 'kontak_gopublik', $questionnaire->kontak_gopublik, array('id' => 'kontak_gopublik', 'class' => 'custom-control-input')) }}
+                  {{ Form::checkbox('kontak_gopublik', 1, old('kontak_gopublik', $questionnaire->kontak_gopublik), ['id' => 'kontak_gopublik', 'class' => 'custom-control-input']) }}
                   {{ Form::label('kontak_gopublik', 'Centang Jika sudah Go Publik', ['class' => 'custom-control-label']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('kontak_alamat', '2. Alamat Kantor/Pabrik') }}
-                  {{ Form::textarea('kontak_alamat', old('kontak_alamat', $questionnaire->kontak_alamat), array('class' => 'form-control', 'rows' => '5')) }}
+                  {{ Form::textarea('kontak_alamat', old('kontak_alamat', $questionnaire->kontak_alamat), ['class' => 'form-control', 'rows' => '5']) }}
                 </div>
                 <div class="form-group">
                   {{ Form::label('kontak_kota', '3. Kota, Provinsi') }}
